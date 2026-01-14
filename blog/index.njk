@@ -1,0 +1,19 @@
+---
+layout: layouts/main.njk
+title: Blog
+---
+
+{# <h2 class="mdf-title2 page-title">{{ title }}</h2> #}
+<p class="blog-description">This is a space where I write about front-end technologies, the frictions between design and
+    engineering, and some of my hobbies. Here is the
+    <a class="mdf-link" href="/blog.xml">RSS feed</a>.</p>
+<ul class="blog-post-list">
+    {% for post in collections.blog | reverse %}
+        <li class="blog-post-list-item">
+            <a href="{{ post.url }}" class="blog-post-list-item-link">
+                <div class="blog-post-list-item-title">{{ post.data.title }}</div>
+                <div class="blog-post-list-item-date mdf-muted">{{ post.date | date }}</div>
+            </a>
+        </li>
+    {% endfor %}
+</ul>

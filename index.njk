@@ -1,0 +1,78 @@
+---
+layout: layouts/main.njk
+title: Home
+---
+
+<link rel="stylesheet" href="/home.css">
+<div class="home-content">
+      <div class="description">
+            <p>My name is
+                  <span class="mdf-emphasis">Guillaume Meigniez</span>, I'm a French front-end engineer currently living in Osaka. I'm
+                        passionate about data visualization, accessibility and design systems. I believe the key to building great software lies
+                        where design and engineering meet.
+            </p>
+            <p>I'm currently available for short-term
+                  <a href="https://www.malt.fr/profile/guillaumemeigniez" class="mdf-link">freelance</a>
+                  missions, as I'm also traveling through Japan. In the past I worked at
+                  <a class="mdf-link" href="https://pass.culture.fr/">pass Culture</a>,
+                  <a class="mdf-link" href="https://www.manadge.com/">Manadge</a>
+                  and
+                  <a class="mdf-link" href="https://www.ibm.com/">IBM France</a>. Have a look at
+                  <a
+                        class="mdf-link text-no-wrap"
+                        href="https://guillaumemeigniez.me/images/resume_guillaume_meigniez.pdf"
+                        target="_blank">my
+                        <i>résumé</i>&nbsp;{% include "components/new-tab-icon.njk" %}</a>.</p>
+            <p>In my spare time I like
+                  <a href="https://www.instagram.com/andre.elawrance/" class="mdf-link">making patterns and sewing clothes</a>,
+                  <a href="https://www.chess.com/member/canette-ouverture" class="mdf-link">playng chess</a>
+                  or taking photos. I
+                  <a class="mdf-link" href="/blog">write about</a>
+                  these interests, as well as about design and front-end technologies.</p>
+      </div>
+</div>
+<div class="side-img">
+      <img src="/assets/img/image_1.webp" class="back-img" id="cover-image" alt="Mediterranean landscape"/>
+</div>
+<script>
+      const atls = [
+            'Mediterranean landscape',
+            'Sunset in the dark from the inside of an apartment',
+            'Sea foam hitting black rocks',
+            'Green seaweed on black rocks',
+            'Human figure casting light in front of a dark seaside landscape',
+            'Multicolor contemporary art construction',
+            'Corner of a New York city street at sunrise',
+            'Red sunset sky in Baltimore harbor',
+            'Hiking cottage viewed from above in the Alps mountains',
+            'Mountain chain in the Alps'
+      ]
+      const images = Array(10).fill(null).map((_, i) => `image_${
+            i + 1
+      }.webp`);
+      function getDefaultImageIndex(excluded) {
+            let random = Math.trunc(Math.random() * images.length);
+            if (random === excluded) {
+                  random = (random + 1) % images.length;
+            }
+            return random
+      }
+      let lastDisplayedIndex = 0;
+      function updateDisplayedImage() {
+            let displayedImageIndex = getDefaultImageIndex(lastDisplayedIndex);
+            lastDisplayedIndex = displayedImageIndex;
+            document.getElementById('cover-image').src = `/assets/img/${
+                  images[displayedImageIndex]
+            }`;
+            document.getElementById('cover-image').alt = atls[displayedImageIndex]
+      };
+      const links = document.querySelectorAll('.description a');
+      links.forEach((link, i) => {
+            link.addEventListener('pointerenter', () => {
+                  updateDisplayedImage();
+            })
+            link.addEventListener('focus', () => {
+                  updateDisplayedImage();
+            })
+      })
+</script>

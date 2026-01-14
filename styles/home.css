@@ -1,0 +1,48 @@
+.home-content {
+    margin: 0;
+    max-width: 750px;
+    flex: 1;
+}
+
+.description {
+    p+p {
+        margin-top: 1rem;
+    }
+}
+
+.content {
+    max-width: 100%;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.side-img {
+    flex: 1;
+    position: relative;
+    max-width: 700px;
+
+    .back-img {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .home-content {
+        max-width: 700px;
+    }
+
+    .content {
+        flex-direction: column;
+    }
+
+    .side-img {
+        flex: unset;
+
+        img {
+            width: unset;
+            max-width: 100%;
+        }
+    }
+}
