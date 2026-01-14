@@ -22,7 +22,7 @@ jobs:
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          protocol: ftps
+          protocol: ftp
           server: ftp.cluster021.hosting.ovh.net
           username: guillan
           password: ${{ secrets.FTP_PERSONALBLOG }}
