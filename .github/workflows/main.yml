@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: "18"
 
-      - name: 🔨 Build Project
+      - name: Build Project
         run: |
           rm -rf _site
           npm install
