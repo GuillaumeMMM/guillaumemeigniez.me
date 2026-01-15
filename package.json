@@ -13,7 +13,7 @@
   "dependencies": {
     "@11ty/eleventy": "3.1.2",
     "@11ty/eleventy-plugin-rss": "^2.0.4",
-    "@guillaumemmm/marquedefabrique": "2.0.7",
+    "@guillaumemmm/marquedefabrique": "2.1.0",
     "@quasibit/eleventy-plugin-sitemap": "^2.2.0"
   }
 }

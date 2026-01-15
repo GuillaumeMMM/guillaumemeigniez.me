@@ -124,6 +124,7 @@ main {
 
   .menu-item {
     text-decoration: none;
+    color: inherit;
 
     &.menu-item-current {
       text-decoration: underline;
