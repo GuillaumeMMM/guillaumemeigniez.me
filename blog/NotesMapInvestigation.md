@@ -3,6 +3,7 @@ title: An interactive map for investigative journalism
 tags: blog
 layout: layouts/post.njk
 date: 2022-09-07 00:00:00
+description: The making of the interactive world map for the 1st anniversary of Forbidden Stories' Pegasus project release.
 ---
 
 In the beginning of 2022, I have built for the [Forbidden Stories](https://forbiddenstories.org) platform their one year anniversary map of the [Project Pegasus](https://forbiddenstories.org/about-the-pegasus-project/) initial release. They wanted to make accessible the data related to the (sometimes potential) victims and (sometimes potential) clients of the Pegasus spyware.

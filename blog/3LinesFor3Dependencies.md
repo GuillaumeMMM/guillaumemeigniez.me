@@ -3,6 +3,7 @@ title: 3 lines for 3 dependencies
 tags: blog
 layout: layouts/post.njk
 date: 2024-08-15 00:00:00
+description: How 3 lines of code can replace 3 dependencies in a front-end project.
 ---
 
 At work this week we noticed that the package `react-autosize-textarea` of our React frontend app had dependencies that were not kept up to date. A quick look at the [github repository](https://github.com/buildo/react-autosize-textarea) showed that the last release was in 2018 and that it has been archived in March of this year. Which led us to look into why we needed that library 🤔.

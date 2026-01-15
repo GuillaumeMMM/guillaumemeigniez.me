@@ -3,10 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta
-      name="description"
-      content="Guillaume Meigniez is a French front-end engineer, blogging about design systems, accessibility, data
-        visualization, and creative side projects.">
+    <meta name="description" content="{% if description %}{{ description | escape }}{% else %}Guillaume Meigniez is a French front-end engineer, blogging about design systems, accessibility, data visualization, and creative side projects.{% endif %}">
     <link rel="stylesheet" href="/bundle.css">
     <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon.png">
     {% if stylesheets %}

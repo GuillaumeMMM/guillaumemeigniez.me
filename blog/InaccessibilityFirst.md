@@ -2,6 +2,7 @@
 title: Inaccessibility first - frontend development with AI
 tags: blog
 layout: layouts/post.njk
+description: The LLMs can not generate accessible front-end code by design.
 date: 2025-02-16 00:00:00
 ---
 

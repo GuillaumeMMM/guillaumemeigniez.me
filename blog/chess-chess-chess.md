@@ -3,6 +3,7 @@ title: Chess, chess, chess
 tags: blog
 date: 2026-01-08 00:00:00
 layout: layouts/post.njk
+description: The story of my chess journey.
 ---
 
 I started playing chess on [chess.com](https://www.chess.com) in 2013. I used to play video games on my computer but after graduating from high school I said goodbye to my digital friends and uninstalled Steam. I was playing what felt like a lot (on average 3 to 4 hours a day), and I was about to move to Paris to begin the _classes préparatoires_: a two-year intensive Maths and Physics program that prepares students for the French engineering contests.

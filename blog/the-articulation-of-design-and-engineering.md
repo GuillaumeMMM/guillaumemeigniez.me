@@ -3,6 +3,7 @@ title: The articulation of design and engineering
 tags: blog
 layout: layouts/post.njk
 date: 2025-12-16 00:00:00
+description: Design engineers and the cooperation of designers and engineers.
 ---
 
 "Design Engineer" seems to be the most popular umbrella title right now for people working at the intersection of design and front-end development. However, it's hard to understand what it covers when reading job listings and blog posts. Everyone seems to define it by a different scope and a different skill list.

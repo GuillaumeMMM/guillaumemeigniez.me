@@ -3,6 +3,7 @@ title: About this website
 tags: blog
 layout: layouts/post.njk
 date: 2021-07-29 00:00:00
+description: Notes on the refresh of this website.
 ---
 
 Oops I did it again... Making this personal website again is probably a waste of time. But the previous version that I made a year ago was too much inaccessible. I would avoid opening it on my phone when my power level was too low, or the ReactJS + ThreeJS + unoptimized GLSL Shaders would kill it.

@@ -3,6 +3,7 @@ title: Everything I missed
 tags: blog
 layout: layouts/post.njk
 date: 2024-05-20 00:00:00
+description: List of the things that I realized could be improved accessibility-wise on this website.
 ---
 
 Last time I worked on this website, I was confident I had built something clean, well designed and accessible. Returning to it after a year learning about accessibility, I realize I had made a few mistakes.

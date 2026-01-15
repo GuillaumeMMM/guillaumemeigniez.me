@@ -2,6 +2,7 @@
 title: Frontend virtualization, performances vs accessibility
 tags: blog
 date: 2025-12-28 00:00:00
+description: First look at the inaccessibility of front-end virtualization, and how perfomances should not be opposed to accessibility.
 layout: layouts/post.njk
 ---
 
