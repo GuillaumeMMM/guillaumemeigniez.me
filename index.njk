@@ -54,14 +54,20 @@ title: Home
             }
             return random
       }
-      let lastDisplayedIndex = 0;
+      let nextDisplayedIndex = getDefaultImageIndex(0);
+      preloadImage(`/assets/img/${
+            images[nextDisplayedIndex]
+      }`);
       function updateDisplayedImage() {
-            let displayedImageIndex = getDefaultImageIndex(lastDisplayedIndex);
-            lastDisplayedIndex = displayedImageIndex;
+            let displayedImageIndex = nextDisplayedIndex;
             document.getElementById('cover-image').src = `/assets/img/${
                   images[displayedImageIndex]
             }`;
             document.getElementById('cover-image').alt = atls[displayedImageIndex]
+            nextDisplayedIndex = getDefaultImageIndex(displayedImageIndex);
+            preloadImage(`/assets/img/${
+                  images[nextDisplayedIndex]
+            }`);
       };
       const links = document.querySelectorAll('.description a');
       links.forEach((link, i) => {
@@ -72,4 +78,8 @@ title: Home
                   updateDisplayedImage();
             })
       })
+      function preloadImage(url) {
+            var img = new Image();
+            img.src = url;
+      }
 </script>
