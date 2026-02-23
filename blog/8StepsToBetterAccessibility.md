@@ -3,7 +3,7 @@ title: 8 steps to better accessibility
 tags: blog
 layout: layouts/post.njk
 date: 2026-02-23 00:00:00
-description: 8 easy questions to evaluate wether or not your company is doing enough with web accessibility
+description: 8 easy questions to evaluate whether or not your company is doing enough with web accessibility
 ---
 
 For 2 years, I was working at a French publicly funded company building software for tens of thousands of teachers and culture professionals, and for millions of French teenagers. As a front-end developer interested in the matter of web accessibility, I organised accessibility audits, then did follow-ups and corrections, I participated in accessibility planning and in choosing new tools, and I helped setup a new design system.
