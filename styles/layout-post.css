@@ -56,6 +56,7 @@ p+p {
 
 .mdf-code-block {
   white-space: pre-wrap;
+  word-break: break-word;
   margin: 1rem 0;
 }
 
