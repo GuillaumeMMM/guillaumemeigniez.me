@@ -8,7 +8,7 @@ description: 8 easy questions to evaluate whether or not your company is doing e
 
 For 2 years, I was working at a French publicly funded company building software for tens of thousands of teachers and culture professionals, and for millions of French teenagers. As a front-end developer interested in the matter of web accessibility, I organised accessibility audits, then did follow-ups and corrections, I participated in accessibility planning and in choosing new tools, and I helped setup a new design system.
 
-Inspired by [Joel on software](https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/), and reflection on that intense experience, I built a set of 8 accessibility questions to ask in order to evaluate a company's capacity at developing accessible software. Those questions have simple yes or no answers, yet they're not always easy things to do. I believe that they encapsulate what I witnessed in the last few years.
+Inspired by [Joel on software](https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/), and reflecting on that intense experience, I built a set of 8 accessibility questions to ask in order to evaluate a company's capacity at developing accessible software. Those questions have simple yes or no answers, yet they're not always easy things to do. I believe that they encapsulate what I witnessed in the last few years.
 
 Answering "yes" to less than 6/8 of those means your company might not release accessible software anytime soon.
 
