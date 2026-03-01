@@ -105,5 +105,12 @@ export default function (eleventyConfig) {
         return self.renderToken(tokens, idx, options);
     };
 
+    eleventyConfig.addTransform("trim-sitemap", function (content, outputPath) {
+        if (outputPath && outputPath.endsWith("sitemap.xml")) {
+            return content.trim();
+        }
+        return content;
+    });
+
     eleventyConfig.setLibrary("md", md);
 };
