@@ -21,6 +21,25 @@ export default function (eleventyConfig) {
         metadata: {
             language: "en",
             title: "Guillaume Meigniez Blog",
+            subtitle: "Life updates and tech-related thoughts.",
+            base: "https://guillaumemeigniez.me/",
+            author: {
+                name: "Guillaume Meigniez",
+            }
+        }
+    });
+
+    eleventyConfig.addPlugin(feedPlugin, {
+        type: "atom",
+        outputPath: "/social.xml",
+        collection: {
+            name: "social",
+            limit: 20,
+        },
+        metadata: {
+            language: "en",
+            title: "Guillaume Meigniez Social",
+            subtitle: "Photos and snippets of my life.",
             base: "https://guillaumemeigniez.me/",
             author: {
                 name: "Guillaume Meigniez",
