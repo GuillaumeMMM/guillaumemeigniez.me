@@ -1,0 +1,76 @@
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 2rem 0 1.5rem 0;
+  font-weight: 400;
+}
+
+.mdf-title3,
+.mdf-title4,
+.mdf-title5,
+.mdf-title6 {
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.mdf-list {
+  margin: 1rem 0;
+}
+
+.back-link {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  line-height: 1.5rem;
+
+  &:visited,
+  &:visited:hover {
+    background-color: inherit;
+    color: inherit;
+  }
+
+  .arrow {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.publication-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.publication-images-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  .publication-images-list-item img {
+    width: 100%;
+    height: unset;
+    display: block;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.publication-description {
+  margin: 1rem 0;
+}
+
+.publication-footer {
+  margin: 1rem 0;
+
+  .end-marker {
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 2px;
+    background-color: var(--mdf-color-text-muted);
+  }
+}

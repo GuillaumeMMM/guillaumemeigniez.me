@@ -12,7 +12,7 @@ The revelations being international and based on geographic data we built a web 
 
 <!-- <a href="https://forbiddenstories.org/pegasus-project-impacts-map/">The result is available here.</a> -->
 
-<img src="https://live.staticflickr.com/65535/52341331315_456c3daaab_z.jpg" alt="Screenshot of the app where we see a map of the world centered on the atlantic ocean. Every country is grey besides France, Hungary, Israel and El Salvador that are red.">
+<img eleventy:ignore src="https://live.staticflickr.com/65535/52341331315_456c3daaab_z.jpg" alt="Screenshot of the app where we see a map of the world centered on the atlantic ocean. Every country is grey besides France, Hungary, Israel and El Salvador that are red.">
 &nbsp;
 
 ## The map
@@ -23,7 +23,7 @@ As far as the map projection is concerned, I worked with d3-geo that offers many
 
 Deciding upon which border to display is sensitive and the rules are unclear. We went for the most used borders in French mainstream media maps such as Le Monde ones. For the contention over West Sahara for example, Google Maps “solves” it by displaying different borders based on where you connect from.
 
-<img src="https://live.staticflickr.com/65535/52341204944_92e20ac651_z.jpg" alt="Screenshot of the app where we see a map of the world. All countries that have a (sometimes suspected) role in the Pegasus Project are highlighted.">
+<img eleventy:ignore src="https://live.staticflickr.com/65535/52341204944_92e20ac651_z.jpg" alt="Screenshot of the app where we see a map of the world. All countries that have a (sometimes suspected) role in the Pegasus Project are highlighted.">
 &nbsp;
 
 ## The accessibility

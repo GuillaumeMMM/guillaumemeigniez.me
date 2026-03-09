@@ -24,12 +24,12 @@ None of this points is finished yet, but I've started working on all of them.
 
 <div class="photo-album">
     <div class="images-row images-row-2">
-        <img src="https://live.staticflickr.com/65535/51343198813_6c4c1198e3.jpg" alt="Blue fabric being cut on the ground">
-        <img src="https://live.staticflickr.com/65535/51343198883_bd2105498e.jpg" alt="Close up of the sewing of the zip for the jacket">
+        <img eleventy:ignore src="https://live.staticflickr.com/65535/51343198813_6c4c1198e3.jpg" alt="Blue fabric being cut on the ground">
+        <img eleventy:ignore src="https://live.staticflickr.com/65535/51343198883_bd2105498e.jpg" alt="Close up of the sewing of the zip for the jacket">
     </div>
     <div class="images-row images-row-2">
-        <img src="https://live.staticflickr.com/65535/51342971306_093fb5049b.jpg" alt="Jacket under a plant">
-        <img src="https://live.staticflickr.com/65535/51343993905_184470d67b.jpg" alt="Close up of the sewing of the zip for the jacket">
+        <img eleventy:ignore src="https://live.staticflickr.com/65535/51342971306_093fb5049b.jpg" alt="Jacket under a plant">
+        <img eleventy:ignore src="https://live.staticflickr.com/65535/51343993905_184470d67b.jpg" alt="Close up of the sewing of the zip for the jacket">
     </div>
 </div>
 

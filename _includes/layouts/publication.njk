@@ -1,0 +1,32 @@
+---
+layout: layouts/main.njk
+stylesheets:
+  - /publication.css
+---
+
+<article>
+    <div class="publication-header">
+        <a href="/social" class="mdf-link back-link">
+            <svg viewBox="0 0 14 14" class="arrow" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path
+                    d="M 12.0505 7.3395 h -9.4218 M 7.3395 12.0505 L 2.6286 7.3395 L 7.3395 2.6286"
+                    stroke-width="1.5"
+                    stroke-linejoin="round"
+                    stroke-linecap="round"
+                    stroke="currentColor"></path>
+            </svg>
+            go back</a>
+        <div class="date mdf-badge">{{ date | date }}</div>
+    </div>
+    <p class="publication-description">{{ content | safe }}</p>
+    <ul class="publication-images-list">
+        {% for image in images %}
+            <li class="publication-images-list-item">
+                <img eleventy:formats="webp" eleventy:widths="800" src="{{ url }}{{ image.src }}" alt="{{ image.alt }}"/>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="publication-footer">
+        <div class="end-marker"></div>
+    </div>
+</article>

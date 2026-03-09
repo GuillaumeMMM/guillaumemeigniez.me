@@ -7,7 +7,7 @@ date: 2019-05-14 00:00:00
 
 Data is an imperfect abstraction of the world. We use blindly this interface as reality itself. This is obscurantism and data humanists are here to switch the light on.
 
-<img src="https://live.staticflickr.com/65535/51340530861_a3e68514fe_c.jpg" alt="Design of the result of the data humanism case study">
+<img eleventy:ignore src="https://live.staticflickr.com/65535/51340530861_a3e68514fe_c.jpg" alt="Design of the result of the data humanism case study">
 
 The world is made of complicated mechanisms and interactions. Thus, the data capturing the world is also complex. But do we always consider this complexity when working with data ?
 

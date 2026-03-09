@@ -1,11 +1,15 @@
 import markdownIt from "markdown-it";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import sitemap from "@quasibit/eleventy-plugin-sitemap";
+import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 
 export default function (eleventyConfig) {
     eleventyConfig.addWatchTarget("./styles/");
     eleventyConfig.addWatchTarget("./assets");
     eleventyConfig.addPassthroughCopy("./assets");
+    eleventyConfig.addPassthroughCopy("./social/**/images");
+
+    eleventyConfig.addPlugin(eleventyImageTransformPlugin);
 
     eleventyConfig.addPlugin(feedPlugin, {
         type: "atom",

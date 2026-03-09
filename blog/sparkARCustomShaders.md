@@ -55,7 +55,7 @@ varying vec3 fNormal;
 
 You should get something like this :
 
-<img src="https://live.staticflickr.com/65535/51792820918_76e4614f79_z.jpg" alt="3D multicolor monkey head on a black background.">
+<img eleventy:ignore src="https://live.staticflickr.com/65535/51792820918_76e4614f79_z.jpg" alt="3D multicolor monkey head on a black background.">
 
 We can now save this code in a new file with the extension .frag, for example **tvNoise.frag**.
 
@@ -129,7 +129,7 @@ We’ll then make a texture asset of the **camera** by clicking on **Texture Ext
 
 Finally select the texture, and create a patch out of it. In the patch editor, link the RGB output of the texture to the camera parameter of the material.
 
-<img src="https://live.staticflickr.com/65535/51791757467_0f37df46a5_z.jpg" alt="Screenshot from the SparkSL app. The patch editor tab is open, and there are two blocks cameraTexture0 and material0 linked from the RGB node on the first one to the camera node on the other one.">
+<img eleventy:ignore src="https://live.staticflickr.com/65535/51791757467_0f37df46a5_z.jpg" alt="Screenshot from the SparkSL app. The patch editor tab is open, and there are two blocks cameraTexture0 and material0 linked from the RGB node on the first one to the camera node on the other one.">
 
 And you should see now the camera having a tv noise effect. This effect could have been done more simply without creating a separate panel, but now you can tweak the shaders params and see all the effects you can do with this setup.
 

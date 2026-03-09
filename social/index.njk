@@ -1,0 +1,41 @@
+---
+layout: layouts/main.njk
+title: Social
+---
+
+<p class="social-description">This is my social posts
+    <a class="mdf-link" href="/social.xml">RSS feed</a>.</p>
+<ul class="social-publication-list">
+    {% for publication in collections.social | reverse %}
+        <li class="social-publication-list-item">
+            <a href="{{ publication.url }}" class="social-publication-list-item-image">
+                <div class="publication-header">
+                    <span class="publication-date">
+                        <time datetime="{{ publication.date }}">{{ publication.date | date }}</time>
+                    </span>
+                    <span class="publication-more">
+                        <?xml version="1.0" encoding="utf-8"?>
+                        <svg width="14px" height="14px" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M1 9.5001C1 10.3285 1.6716 11.0001 2.5 11.0001H4L4 10.0001H2.5C2.2239 10.0001 2 9.7762 2 9.5001L2 2.5001C2 2.2239
+                                    2.2239 2.0001 2.5 2.0001L9.5 2.0001C9.7761 2.0001 10 2.2239 10 2.5001V4H5.5C4.6716 4 4 4.6716 4 5.5V12.5C4 13.3284 4.6716
+                                    14 5.5 14H12.5C13.3284 14 14 13.3284 14 12.5V5.5C14 4.6716 13.3284 4 12.5 4H11V2.5001C11 1.6716 10.3284 1.0001 9.5
+                                    1.0001H2.5C1.6716 1.0001 1 1.6716 1 2.5001V9.5001ZM5 5.5C5 5.2239 5.2239 5 5.5 5H12.5C12.7761 5 13 5.2239 13 5.5V12.5C13
+                                    12.7762 12.7761 13 12.5 13H5.5C5.2239 13 5 12.7762 5 12.5V5.5Z"
+                                fill="currentColor"/>
+                        </svg>
+                        <span class="publication-more-text">{{ publication.data.images.length - 1 }} more<span class="visually-hidden">
+                                pictures to see</span>
+                        </span>
+                    </div>
+                </span>
+                <img eleventy:widths="400" eleventy:formats="webp" src="{{ publication.url }}{{ publication.data.images[0].src }}" alt="{{ publication.data.images[0].alt }}"/>
+                <span class="publication-description">
+                    <span>{{ publication.data.title }}</span>
+                </span>
+            </a>
+        </li>
+    {% endfor %}
+</ul>
