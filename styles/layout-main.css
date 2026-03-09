@@ -197,7 +197,7 @@ main {
       }
 
       &:hover,
-      &:focus {
+      &:focus-visible {
 
         .publication-more,
         .publication-date,
@@ -223,7 +223,7 @@ main {
         }
       }
 
-      &:focus {
+      &:focus-visible {
         outline: 2px solid var(--mdf-color-outline-default);
         outline-offset: 4px;
         border-radius: 8px;
