@@ -42,8 +42,8 @@ The most accessible solution tends to be the one that uses the native power of t
 
 Yet I've noticed that optimizing without caring about accessibility often leads to over-engineered solutions that end up worse for the user.
 
-That's what I felt when watching the virtualization from the Frontend Masters course: I learned a lot during the course, but if an engineer in my team suggested that JS-intensive solution to fix a render performance bottleneck, I'd push back (starting with "why not pagination?" or "why is there so many elements in the DOM that we cannot render them all?").
+That's what I felt when watching the virtualization from the Frontend Masters course: I learned a lot during the course, but if an engineer in my team suggested that JS-intensive solution to fix a render performance bottleneck, I'd push back. Maybe a pagination would work? Also why is there so many elements in the DOM to begin with? I'm sure there is are discussions to have here.
 
-But I get it, for an engineer virtualization is a satisfying solution to build. And alternatives may feel frustrating to some because they are an attempt to get out of the accessibility vs performance opposition. Also developers often try to find technical solutions to an already established UI design.
+Virtualization is the heavy yet easy solution. I get it. For an engineer, virtualization is satisfying to implement. And it's such a common pattern now that finding alternatives is frustrating as it's an attempt to get out of the accessibility vs performance opposition by going back to something simpler.
 
-Let's push back on the default adoption of virtualization and let's address accessibility when considering this pattern.
+This negative sentiment of _going back_ is the hard part. And it's one of the things we need to work on the most as senior frontend developers.
