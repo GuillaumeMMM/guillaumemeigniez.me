@@ -18,6 +18,7 @@ stylesheets:
             go back</a>
         <div class="date mdf-badge">{{ date | date }}</div>
     </div>
+    <h2 class="mdf-title3">{{ title | safe }}</h2>
     <p class="publication-description">{{ content | safe }}</p>
     <ul class="publication-images-list">
         {% for image in images %}
