@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ lang or 'en' }}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,7 @@
   </head>
   <body>
     <a class="skip-to-content-link" href="#main">
-      Skip to content
+      {% if lang === 'fr' %}Aller au contenu{% else %}Skip to content{% endif %}
     </a>
     <header class="header">
       <h1 class="title">
