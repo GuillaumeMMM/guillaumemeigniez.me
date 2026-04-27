@@ -1,0 +1,226 @@
+---
+layout: layouts/main.njk
+title: Sélection de projets
+lang: fr
+description: "Guillaume Meigniez est un développeur front-end en freelance spécialisé dans l'accessibilité numérique, da visualisation de données et les design systems."
+stylesheets:
+  - /page-freelance.css
+---
+
+<h2 class="mdf-title2 page-title">Sélection de projets</h2>
+<p>Développeur front-end freelance spécialisé en
+    <span class="mdf-emphasis">accessibilité numérique</span>,
+    <span class="mdf-emphasis">design systems</span>
+    et
+    <span class="mdf-emphasis">visualisation de données</span>, j'ai travaillé sur une variété de projets : dispositif
+        gouvernemental, start-up, journalisme d'investigation et outils open source. Voici une sélection de mes réalisations
+        récentes.
+</p>
+<img
+    eleventy:ignore="eleventy:ignore"
+    src="/assets/img/image_1.webp"
+    class="banner"
+    alt="Vue sur une terrasse devant la mer méditerrannée"/>
+<h3 class="mdf-title3">Accessibilité au pass Culture</h3>
+<p>Entre juillet 2023 et novembre 2025 j'ai travaillé sur le front-end des applications du
+    <a class="mdf-link" href="https://pass.culture.fr/">pass Culture</a>, dispositif gouvernemental permettant à tous les
+        jeunes de bénéficier de crédits à dépenser dans des produits et expériences culturelles.</p>
+<p>J'ai en particulier travaillé sur l'application web dédiée aux acteurs culturels et enseignants, leur permettant de
+    renseigner leur catalogue d'offres culturelles, de gérer leur stock destiné aux jeunes bénéficiaires et de gérer les
+    réservations.</p>
+<p>En tant que dispositif gouvernemental destiné à des millions de jeunes en France via l'application mobile, et à des
+    dizaines de milliers d'acteurs culturels et enseignants sur la plateforme web, le pass Culture se doit d'être
+    accessibles à tous. Cependant, ayant commencé en tant que start-up d'état, les outils du pass n'ont pas été développés
+    avec l'accessibilité en tête.
+</p>
+<p>En arrivant au pass Culture, j'avais donc pour objectif d'aider à construire une culture de la recherche de
+    l'accessibilité, encourager les pratiques, former les équipes produits et développer des outils pour automatiser un
+    partie de la vérification de la conformité au RGAA.</p>
+<div>
+    J'ai notamment référent accessibilité sur l'application web pour les acteurs culturels. A ce poste, j'ai :
+    <ul class="mdf-list">
+        <li class="mdf-list-item">Participé à la stratégie accessibilité globale du pass Culture</li>
+        <li class="mdf-list-item">Organisé des ateliers de formation des équipes produit</li>
+        <li class="mdf-list-item">Fait des tests de l'application avec des utilisateurs en situation de handicap</li>
+        <li class="mdf-list-item">Organisé et réalisé la correction des erreurs d'accessibilité relevées dans les audits RGAA
+            précédents</li>
+        <li class="mdf-list-item">Organisé de nouveaux audits RGAA</li>
+        <li class="mdf-list-item">Mené la partie technique de la création du
+            <a class="mdf-link" href="https://github.com/pass-culture/design-system">design system du pass Culture</a>
+            ayant l'accessibilité comme valeur principale</li>
+        <li class="mdf-list-item">Mis en place des outils de tests d'accessibilité automatisés dans la CI du projet</li>
+        <li class="mdf-list-item">Créé une checklist d'accessibilité pour les équipes produits</li>
+    </ul>
+</div>
+<p>Le taux de conformité global au RGAA est un indicateur peu fiable en termes d'accessibilité, mais durant mon passage
+    au pass, l'application des acteurs culturels est passée d'environ 40 % de conformité évaluée sur 12 pages à +70 % évalué
+    sur 22 pages.</p>
+<h3 class="mdf-title3">Visualisation de données pour le journalisme d'investigation</h3>
+<p>En tant que freelance front-end spécialisé en visualisation de données, j'ai eu l'occasion de collaborer avec des
+    médias d'investigations. Les projets les plus ambitieux étaient la création de cartes interactives pour Forbidden
+    Stories, Public Eye et Greenpeace Unearthed.</p>
+<h4 class="mdf-title4">Forbidden Stories</h4>
+<p>Avec
+    <a class="mdf-link" href="https://forbiddenstories.org/fr/accueil/">Forbidden Stories</a>, j'ai réalisé une carte
+        interactive et un scrollytelling pour l'anniversaire des 1 an des révélations liées au spyware Pegasus. La carte
+        interactive est
+    <a class="mdf-link" href="https://fs-pegasus-one-year.netlify.app/">disponible ici</a>.</p>
+<p>L'enjeu était de montrer l'importance des révélations à l'échelle mondiale en permettant aux utilisateurs de naviguer
+    à travers les données des pays impliqués.</p>
+<ul class="img-list">
+    <li class="img-list-item">
+        <img
+            src="./images/forbidden-stories.webp"
+            eleventy:formats="webp"
+            eleventy:widths="800"
+            alt="Carte du monde interactive avec la France sélectionnée et les informations liées au rôle de la France dans le
+                Pegasus Project"/>
+    </li>
+</ul>
+<p>Encore avec Forbidden Stories, j'ai participé en 2023 à la réalisation de
+    <a class="mdf-link" href="https://forbiddenstories.org/fr/gauri-lankesh-ere-fausses-informations/">l'article suivant la
+        mort de Gauri Lankesh</a>
+    en créant la visualisation interactive du réseau de personnes et d'organismes qui ont participé à l'assassinat de la
+    journaliste.</p>
+<ul class="img-list">
+    <li class="img-list-item">
+        <img
+            src="./images/gauri-lankesh.webp"
+            eleventy:formats="webp"
+            eleventy:widths="800"
+            alt="Diagramme interactif en réseau des entités impliqué&es dans l'assassinat de Gauri Lankesh"/>
+    </li>
+</ul>
+<h4 class="mdf-title4">Public Eye</h4>
+<p>En 2025, j'ai collaboré avec le média d'investigation suisse
+    <a class="mdf-link" href="https://www.publiceye.ch/fr/">Public Eye</a>
+    et
+    <a class="mdf-link" href="https://unearthed.greenpeace.org/">Greenpeace Unearthed</a>
+    à la création d'une carte interactive mondiale montrant les exportations de pesticides interdits depuis l'Union
+    Européenne. La carte interactive est
+    <a class="mdf-link" href="https://www.publiceye.ch/fr/thematiques/pesticides/weltkarte/">disponible ici</a>.</p>
+<ul class="img-list">
+    <li class="img-list-item">
+        <img
+            src="./images/public-eye.webp"
+            eleventy:formats="webp"
+            eleventy:widths="800"
+            alt="Carte du monde interactive montrant les exports de pesticides depuis l'Espagne vers un grand nombre de pays hors de
+                l'UE"/>
+    </li>
+</ul>
+<h3 class="mdf-title3">Design systems</h3>
+<h4 class="mdf-title4">pass Culture</h4>
+<p>J'ai été pendant 2 ans le référent technique du
+    <a href="https://zeroheight.com/6b27136ed/p/38cfbb-design-system-de-pass-culture" class="mdf-link">design system du pass
+        Culture</a>
+    . Ce design system est destiné à une vingtaine de développeurs front-end et 8 designers, répartis dans les différentes
+    applications du dispositif (mobile + web).</p>
+<p>L'enjeu de ce design system était à la fois de créer un outil facilitant le travail des designers, product managers
+    et développeurs, mais aussi de garantir la cohérence, la performance et l'accessibilité des interfaces utilisées par des
+    millions de jeunes bénéficiaires, de dizaines de milliers d'acteurs culturels, et de milliers d'enseignants.</p>
+<p>En collaboration avec une designer (lead du projet design system), et avec un développeur React Native, nous avons
+    construit le
+    <a class="mdf-link" href="https://github.com/pass-culture/design-system">design system</a>
+    sous forme d'une bibliothèque de génération de tokens pour plusieurs plateformes (web / mobile), plusieurs brands (pour
+    les jeunes, ou pour les professionnels du secteur culturel), et plusieurs thèmes (clair / sombre).
+</p>
+<p>En parallèle des tokens, nous avons mis en place des
+    <a
+        class="mdf-link"
+        href="https://pass-culture.github.io/pass-culture-main/?path=/docs/design-system-button--documentation">kits de
+        composants</a>
+    basés sur ces tokens.</p>
+<ul class="img-list img-list-2">
+    <li class="img-list-item">
+        <img
+            src="./images/buttons.png"
+            eleventy:formats="webp"
+            eleventy:widths="400"
+            alt="Exemples de visuels de boutons en mode clair et sombre"/>
+    </li>
+    <li class="img-list-item">
+        <img
+            src="./images/tokens-tree.png"
+            eleventy:formats="webp"
+            eleventy:widths="400"
+            alt="Arbre de visualisation de quelques tokens du design system"/>
+    </li>
+    <li class="img-list-item">
+        <img
+            src="./images/radio.png"
+            eleventy:formats="webp"
+            eleventy:widths="400"
+            alt="Exemples de visuels de composants radio en mode clair et sombre"/>
+    </li>
+    <li class="img-list-item">
+        <img
+            src="./images/toast.png"
+            eleventy:formats="webp"
+            eleventy:widths="400"
+            alt="Exemples de visuels de composants toasts en mode clair et sombre"/>
+    </li>
+</ul>
+<h4 class="mdf-title4">Manadge</h4>
+<p>Entre 2019 et 2023 j'ai été développeur front-end et designer de la start-up
+    <a class="mdf-link" href="https://www.manadge.com/">Manadge</a>, SaaS d'agrégation et de visualisation de données pour
+        les acteurs de la publicité programmatique. J'y ai créé et maintenu le front-end de 2 applications web : l'app
+        principale de la start-up, et le back office.</p>
+<p>Pour garantir la cohérence et la maintenabilité des applications, j'ai mis en place et maintenu une librairie de
+    composants web et une librairie de styles.</p>
+<ul class="img-list img-list-2">
+    <li class="img-list-item">
+        <img
+            src="./images/manadge_1_captured.png"
+            eleventy:formats="webp"
+            eleventy:widths="400"
+            alt="Page d'accueil de l'application Manadge avec au centre un graphique montraint une courbe de l'activité des deals du
+                partenaire"/>
+    </li>
+    <li class="img-list-item">
+        <img
+            src="./images/manadge_2_captured.png"
+            eleventy:formats="webp"
+            eleventy:widths="400"
+            alt="Page 'My Dashboard' de l'application Manadge avec plusieurs widgets montrant différent types de graphiques"/>
+    </li>
+</ul>
+<h3 class="mdf-title3">Création d'outils d'accessibilité</h3>
+<h4 class="mdf-title4">Contrast checker</h4>
+<p>Les design systems étant une base de design et de code, ils se doivent de garantir autant que possible
+    l'accessibilité des interfaces créées en les utilisant.</p>
+<p>Le critère de conformité aux WCAG ou au RGAA
+    <a href="https://webaim.org/projects/million/" class="mdf-link">les plus souvent non conformes</a>
+    est l'existence d'un contraste de couleur insuffisant entre le texte et son arrière-plan. Donc lorsqu'on crée les tokens
+    de couleur d'un design system il est très important de choisir des couleurs qui vont permettre un maximum de
+    combinaisons entre couleurs de texte et couleurs d'arrière-plan.</p>
+<p>Pour aider à ça, j'ai créé l'outil de visualisation d'une grille de combinaisons de couleurs à partir d'une liste de
+    tokens
+    <a class="mdf-link" href="https://contrastcheckergrid.com/">contrastcheckergrid.com</a>. Ce site web permet de voir
+        instantanément quelles sont les combinaisons conformes à plusieurs référentiels d'accessibilité différents.</p>
+<ul class="img-list">
+    <li class="img-list-item">
+        <img
+            src="./images/contrastchecker.png"
+            eleventy:formats="webp"
+            eleventy:widths="800"
+            alt="Formulaire de reseignement des couleurs avec en dessous la grille automatiquement générée montrant quelles
+                combinaisons de couleurs sont conformes aux WCAG 2.2 AA"/>
+    </li>
+</ul>
+<h4 class="mdf-title4">Open source - data-navigator</h4>
+<p>J'ai participé au développement du projet open source
+    <a class="mdf-link" href="https://dig.cmu.edu/data-navigator/">data navigator</a>
+    : une librairie JavaScript qui permet l'ajout d'une couche logique de navigation à des visualisations de données dans le
+    web. Ainsi un visuel de données même statique peut être rendu navigable au clavier et lecteur d'écran, et peut
+    retranscrire la complexité de la lecture d'un graphique.</p>
+<p>Le projet est maintenu principalement par le créateur de
+    <a class="mdf-link" href="https://chartability.fizz.studio">Chartability</a>, le référentiel d'accessibilité des visualisations de données le plus populaire.</p>
+<p>J'ai par exemple
+    <a class="mdf-link" href="https://github.com/cmudig/data-navigator/pull/79">créé la fonctionnalité</a>
+    de construction automatique de tables indiquant les commandes possibles pour la
+                                navigation.</p>
+<div class="contact">
+    <a href="mailto:guillaume.meigniez@proton.me" class="mdf-button">Me contacter par e-mail</button>
+    <a href="https://calendly.com/guillaume-meigniez-proton/30min" class="mdf-button">Réserver un créneau pour discuter</a>
+</div>
