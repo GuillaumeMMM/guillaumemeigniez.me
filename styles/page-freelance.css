@@ -79,13 +79,21 @@ img {
     }
 }
 
+.contact-block {
+    margin-top: 2rem;
+}
+
 .contact {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: 2rem;
+    margin-top: 1rem;
 
     .mdf-button {
         display: inline-block;
     }
+}
+
+.portfolio-link {
+    display: inline-block;
 }
