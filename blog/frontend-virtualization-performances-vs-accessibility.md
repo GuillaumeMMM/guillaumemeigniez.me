@@ -22,13 +22,13 @@ The problematic word above is "visible". If only what's visible by scrolling is 
 - When navigating via headings or links, only a subset of the actual content is available.
 - Using screen readers, the count of items or the current position are wrong.
 
-These are the first few things that I can think of, and I don't see obvious adjustments to fix them. There is a fundamental misunderstanding. Virtualization is an optimization of what we see on the screen, as if any other element of the render tree were a useless overload consuming power. I have learned that considering accessibility when building an interface often translates to asking myself "does this still work without a screen and a mouse?".
+These are the first few things that I can think of, and I don't see obvious adjustments to fix them. There is a fundamental misunderstanding. Virtualization is an optimization of what we see on the screen, as if any other element of the render tree were a useless overload consuming memory. I have learned that considering accessibility when building an interface often translates to asking myself "does this still work without a screen and a mouse?".
 
 ## State of the art
 
 The most popular libraries [react-window](https://github.com/bvaughn/react-window) and [react-virtualized](https://github.com/bvaughn/react-virtualized) were created to implement this pattern. I'm pretty sure they solve the problem incredibly well for many users.
 
-Looking at accessibility issues on react-window's GitHub, there's an issue from [last September](https://github.com/bvaughn/react-window/issues/834) that was opened because `<li>` tags were not direct children of `<ul>` tags. [Another one from 2023](https://github.com/bvaughn/react-window/issues/650) was closed as "not planned" because it points out that a focused element will lose focus when the user scrolls (because the whole item is deleted from the render tree).
+But looking at accessibility issues on react-window's GitHub, there's one from [last September](https://github.com/bvaughn/react-window/issues/834) that was opened because `<li>` tags were not direct children of `<ul>` tags. [Another one from 2023](https://github.com/bvaughn/react-window/issues/650) was closed as "not planned" because it points out that a focused element will lose focus when the user scrolls (because the whole item is deleted from the render tree).
 
 On the react-virtualized GitHub page, accessibility issues are not addressed.
 
