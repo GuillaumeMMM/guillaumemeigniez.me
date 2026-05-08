@@ -320,3 +320,27 @@ i {
     outline-offset: -1px;
   }
 }
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(post-title-my-post) {
+  animation: fade-out 0.1s ease-out;
+}
+
+::view-transition-new(post-title-my-post) {
+  animation: fade-in 0.1s ease-out;
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}

@@ -33,7 +33,7 @@ title: Social
                 </span>
                 <img eleventy:widths="400" eleventy:formats="webp" src="{{ publication.url }}{{ publication.data.images[0].src }}" alt="{{ publication.data.images[0].alt }}"/>
                 <span class="publication-description">
-                    <span>{{ publication.data.title }}</span>
+                    <span style="view-transition-name: {{ publication.data.title | toTransitionNamePublication }}">{{ publication.data.title }}</span>
                 </span>
             </a>
         </li>

@@ -18,7 +18,7 @@ stylesheets:
             go back</a>
         <div class="date mdf-badge">{{ date | date }}</div>
     </div>
-    <h2 class="mdf-title2 post-title">{{ title }}</h2>
+    <h2 class="mdf-title2 post-title" style="view-transition-name: {{ title | toTransitionNamePost }}">{{ title }}</h2>
     {{ content | safe }}
     <div class="post-footer">
         <div class="end-marker"></div>

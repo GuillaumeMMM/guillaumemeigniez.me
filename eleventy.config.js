@@ -57,6 +57,14 @@ export default function (eleventyConfig) {
         return new Date(date).toLocaleString('en-US', { day: 'numeric', month: "short", year: 'numeric' });
     });
 
+    eleventyConfig.addFilter("toTransitionNamePost", (str) => {
+        return `post-${str.toLowerCase().trim().replace(/[^a-z0-9]/g, "-")}`
+    });
+
+    eleventyConfig.addFilter("toTransitionNamePublication", (str) => {
+        return `publication-${str.toLowerCase().trim().replace(/[^a-z0-9]/g, "-")}`
+    });
+
     const md = markdownIt({
         html: true,
         breaks: true,

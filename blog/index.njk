@@ -11,7 +11,7 @@ title: Blog
     {% for post in collections.blog | reverse %}
         <li class="blog-post-list-item">
             <a href="{{ post.url }}" class="blog-post-list-item-link">
-                <div class="blog-post-list-item-title">{{ post.data.title }}</div>
+                <div class="blog-post-list-item-title" style="view-transition-name: {{ post.data.title | toTransitionNamePost }}">{{ post.data.title }}</div>
                 <div class="blog-post-list-item-date mdf-muted">{{ post.date | date }}</div>
             </a>
         </li>

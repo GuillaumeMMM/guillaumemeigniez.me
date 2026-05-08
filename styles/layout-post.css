@@ -88,3 +88,7 @@ img {
     background-color: var(--mdf-color-text-muted);
   }
 }
+
+@view-transition {
+  navigation: auto;
+}
