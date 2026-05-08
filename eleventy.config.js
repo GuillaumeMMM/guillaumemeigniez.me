@@ -65,6 +65,10 @@ export default function (eleventyConfig) {
         return `publication-${str.toLowerCase().trim().replace(/[^a-z0-9]/g, "-")}`
     });
 
+    eleventyConfig.addFilter("toTransitionNameImage", (str) => {
+        return `image-${str.toLowerCase().trim().replace(/[^a-z0-9]/g, "-")}`
+    });
+
     const md = markdownIt({
         html: true,
         breaks: true,

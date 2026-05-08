@@ -23,7 +23,7 @@ stylesheets:
     <ul class="publication-images-list">
         {% for image in images %}
             <li class="publication-images-list-item">
-                <img eleventy:formats="webp" eleventy:widths="800" src="{{ url }}{{ image.src }}" alt="{{ image.alt }}"/>
+                <img eleventy:formats="webp" eleventy:widths="800" src="{{ url }}{{ image.src }}" alt="{{ image.alt }}" {% if loop.first %} style="view-transition-name: {{ title | toTransitionNameImage }}" {% endif %}}/>
             </li>
         {% endfor %}
     </ul>
