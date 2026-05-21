@@ -57,6 +57,10 @@ export default function (eleventyConfig) {
         return new Date(date).toLocaleString('en-US', { day: 'numeric', month: "short", year: 'numeric' });
     });
 
+    eleventyConfig.addFilter("dateId", date => {
+        return new Date(date).toISOString().slice(0, 10).replace(/-/g, '');
+    });
+
     eleventyConfig.addFilter("toTransitionNamePost", (str) => {
         return `post-${str.toLowerCase().trim().replace(/[^a-z0-9]/g, "-")}`
     });

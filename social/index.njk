@@ -31,7 +31,7 @@ title: Social
                         </span>
                     </div>
                 </span>
-                <img eleventy:widths="400" eleventy:formats="webp" src="{{ publication.url }}{{ publication.data.images[0].src }}" alt="{{ publication.data.images[0].alt }}" style="view-transition-name: {{ publication.data.title | toTransitionNameImage }}"/>
+                <img eleventy:widths="400" eleventy:formats="webp" id="{{ publication.date | dateId }}" src="{{ publication.url }}{{ publication.data.images[0].src }}" alt="{{ publication.data.images[0].alt }}" style="view-transition-name: {{ publication.data.title | toTransitionNameImage }}"/>
                 <span class="publication-description">
                     <span style="view-transition-name: {{ publication.data.title | toTransitionNamePublication }}">{{ publication.data.title }}</span>
                 </span>
@@ -39,3 +39,4 @@ title: Social
         </li>
     {% endfor %}
 </ul>
+<script src="/assets/js/social.js"></script>
