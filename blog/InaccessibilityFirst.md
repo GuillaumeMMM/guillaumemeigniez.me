@@ -1,5 +1,5 @@
 ---
-title: Inaccessibility first - frontend development with AI
+title: Inaccessibility first
 tags: blog
 layout: layouts/post.njk
 description: The LLMs can not generate accessible front-end code by design.
