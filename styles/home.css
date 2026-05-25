@@ -21,10 +21,38 @@
 .side-img {
     flex: 1;
     position: relative;
-    max-width: 700px;
+    max-width: 100%;
+    border: 2px solid black;
+    width: 600px;
+    height: 300px;
+}
 
-    .back-img {
+.canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    min-height: 100%;
+    border: 2px solid blue;
+    pointer-events: none;
+
+    canvas {
         width: 100%;
+        height: 100%;
+    }
+}
+
+.sticker {
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    z-index: 2;
+    cursor: pointer;
+
+    img {
+        width: 100px;
+        height: 100px;
     }
 }
 
