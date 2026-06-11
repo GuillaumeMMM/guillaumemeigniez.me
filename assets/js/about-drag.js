@@ -1,133 +1,167 @@
-const sticker = document.getElementById('sticker');
 const canvas = document.getElementById('canvas');
 const sideImage = document.getElementById('side-image');
-let dragging = false;
+let sideImageRect = sideImage.getBoundingClientRect();
+const sideImageRatio = 9 / 5;
+let sideImageHeight = sideImageRect.width / sideImageRatio;
+const isSmallSticker = canvas.clientWidth < 400;
+const isBigSticker = canvas.clientWidth > 1600;
+const stickerWidth = isSmallSticker ? 100 : isBigSticker ? 200 : 150;
+const displaySideStickers = canvas.clientWidth > 900;
+const pixelizationLimit = 550;
+
+const rawStickers = [
+    {
+        id: 0,
+        ratio: 1,
+        bgUrl: 'assets/img/bg13.webp'
+    },
+    {
+        id: 1,
+        ratio: 0.89375,
+        isMain: true,
+        bgUrl: 'assets/img/bg1.webp',
+    },
+    {
+        id: 2,
+        ratio: 1.16498,
+        bgUrl: 'assets/img/bg11.webp'
+    },
+    {
+        id: 3,
+        ratio: 2.3034,
+        widthRatio: 1.3,
+        bgUrl: 'assets/img/bg9.webp'
+    },
+    {
+        id: 4,
+        ratio: 0.885,
+        isMain: true,
+        right: true,
+        bgUrl: 'assets/img/bg3.webp'
+    },
+    {
+        id: 5,
+        ratio: 0.56,
+        widthRatio: 0.9,
+        isMain: true,
+        right: true,
+        bgUrl: 'assets/img/bg0.webp'
+    },
+    {
+        id: 6,
+        ratio: 1.8807,
+        bgUrl: 'assets/img/bg14.webp'
+    },
+    {
+        id: 7,
+        ratio: 0.82,
+        isMain: true,
+        bgUrl: 'assets/img/bg6.webp'
+    },
+    {
+        id: 8,
+        ratio: 0.7581,
+        bgUrl: 'assets/img/bg7.webp'
+    },
+    {
+        id: 9,
+        ratio: 0.76197,
+        isMain: true,
+        bgUrl: 'assets/img/bg5.webp'
+    },
+    {
+        id: 10,
+        ratio: 1.2309,
+        bgUrl: 'assets/img/bg12.webp'
+    },
+    {
+        id: 11,
+        ratio: 0.9237,
+        bgUrl: 'assets/img/bg10.webp'
+    }
+]
+
+//  Pick stickers to be displayed
+const mainStickersIds = rawStickers.filter(st => st.isMain).map(st => st.id);
+const randomStickers = [mainStickersIds[Math.trunc(Math.random() * mainStickersIds.length)]];
+while (randomStickers.length < (displaySideStickers ? 4 : 1)) {
+    const eligible = rawStickers.filter(s => !randomStickers.includes(s.id) && !s.isMain);
+    randomStickers.push(eligible[Math.trunc(Math.random() * eligible.length)].id)
+}
+
+const sidePadding = (canvas.clientWidth - sideImageRect.width) / 2;
+const availableSpaceWidth = sidePadding - 32;
+const availableSpaceHeight = window.innerHeight - 32 - 30;
+
+//  Available positions for stickers
+const stickersAvailableSpots = [
+    { x: 0, y: 0 },
+    { x: 0, y: availableSpaceHeight / 2 },
+    { x: canvas.clientWidth - sidePadding, y: 0 },
+    { x: canvas.clientWidth - sidePadding, y: availableSpaceHeight / 2 },
+]
+
+const stickerPositionFromIndex = Math.trunc(Math.random() * stickersAvailableSpots.length);
+const stickers = randomStickers.map(stId => rawStickers.find(rst => rst.id === stId))
+    .map((sticker, i) => {
+        const offset = isSmallSticker ? 10 : 30;
+        const stickerWidthAdapted = stickerWidth * (sticker.widthRatio || 1)
+        const stickerPosition = stickersAvailableSpots[(stickerPositionFromIndex + i) % stickersAvailableSpots.length];
+        stickerPosition.x += (availableSpaceWidth - stickerWidthAdapted) / 2;
+
+        stickerPosition.y += (availableSpaceHeight / 2 - (stickerWidthAdapted / sticker.ratio)) / 2;
+        return {
+            ...sticker,
+            size: { width: stickerWidthAdapted, height: stickerWidthAdapted / sticker.ratio },
+            el: document.getElementById(`sticker_${i}`),
+            initialPos: i === 0 ? { x: sticker.right ? sideImageRect.x + sideImageRect.width - offset - stickerWidthAdapted : sideImageRect.x + offset, y: sideImageRect.y + sideImageHeight - (stickerWidthAdapted / sticker.ratio) + offset } : { x: stickerPosition.x, y: stickerPosition.y }
+        }
+    });
+
+let stickersRects = stickers.map(st => ({ rect: st.el?.getBoundingClientRect(), id: st.id }))
+
+
+//  Drag and drop of stickers
+const mouse = { x: 0, y: 0 }
+
+let draggingId = null;
 let offX = 0;
 let offY = 0;
 
-const stickerDimensions = { width: 100, height: 100 };
+stickers.forEach(st => {
+    st.el.style.width = `${st.size.width}px`;
+    st.el.style.height = `${st.size.height}px`;
+    st.el.style.left = `${st.initialPos.x}px`;
+    st.el.style.top = `${st.initialPos.y}px`;
 
-sticker.setAttribute('width', `${stickerDimensions.width}px`);
-sticker.setAttribute('height', `${stickerDimensions.height}px`);
+    st.el.addEventListener('pointerdown', (e) => {
+        e.preventDefault();
+        draggingId = st.id;
+        offX = e.clientX - st.el.offsetLeft;
+        offY = e.clientY - st.el.offsetTop;
+        st.el.style.cursor = 'grabbing';
+    });
+})
 
-//  Drag
-sticker.addEventListener('mousedown', (e) => {
-    e.preventDefault();
-    dragging = true;
-    offX = e.clientX - sticker.offsetLeft;
-    offY = e.clientY - sticker.offsetTop;
-    sticker.style.cursor = 'grabbing';
+document.addEventListener('pointermove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+    if (draggingId === null) return;
+
+    const sticker = stickers.find(st => st.id === draggingId);
+    const maxX = document.documentElement.scrollWidth - sticker.size.width;
+    const maxY = document.documentElement.scrollHeight - sticker.size.height - 10;
+
+    sticker.el.style.left = Math.min(Math.max(0, e.clientX - offX), maxX) + 'px';
+    sticker.el.style.top = Math.min(Math.max(0, e.clientY - offY), maxY) + 'px';
+
+    stickersRects = stickers.map(st => ({ rect: st.el.getBoundingClientRect(), id: st.id }))
 });
 
-document.addEventListener('mousemove', (e) => {
-    if (!dragging) return;
-
-    const maxX = document.documentElement.scrollWidth - stickerDimensions.width;
-    const maxY = document.documentElement.scrollHeight - stickerDimensions.height - 10;
-    sticker.style.left = Math.min(Math.max(0, e.clientX - offX), maxX) + 'px';
-    sticker.style.top = Math.min(Math.max(0, e.clientY - offY), maxY) + 'px';
+document.addEventListener('pointerup', () => {
+    draggingId = null;
+    stickers.forEach(st => {
+        st.el.style.cursor = 'grab';
+    })
 });
 
-document.addEventListener('mouseup', () => {
-    dragging = false;
-    sticker.style.cursor = 'grab';
-});
-
-//  Canvas
-async function loadShaderSource(url) {
-    const response = await fetch(url);
-    if (!response.ok) {
-        throw new Error(`Failed to load shader: ${url}`);
-    }
-    return await response.text();
-}
-
-(async function () {
-    const gl = canvas.getContext("webgl2");
-
-    if (!gl) {
-        alert("WebGL2 not supported in your browser.");
-    }
-
-    // Compile shader helper
-    function compileShader(type, source) {
-        const shader = gl.createShader(type);
-        gl.shaderSource(shader, source);
-        gl.compileShader(shader);
-        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-            console.error(gl.getShaderInfoLog(shader));
-            gl.deleteShader(shader);
-            return null;
-        }
-        return shader;
-    }
-
-    const vertexShader = compileShader(
-        gl.VERTEX_SHADER,
-        await loadShaderSource("assets/js/shaders/shader.vert")
-    );
-
-    const fragmentShader = compileShader(
-        gl.FRAGMENT_SHADER,
-        await loadShaderSource("assets/js/shaders/shader.frag")
-    );
-
-    const program = gl.createProgram();
-    gl.attachShader(program, vertexShader);
-    gl.attachShader(program, fragmentShader);
-    gl.linkProgram(program);
-    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-        console.error(gl.getProgramInfoLog(program));
-    }
-
-    gl.useProgram(program);
-
-    // Fullscreen quad positions
-    const positions = new Float32Array([
-        -1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1,
-    ]);
-
-    // Create buffer and upload data
-    const positionBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STATIC_DRAW);
-
-    // Bind attribute
-    const positionLocation = gl.getAttribLocation(program, "a_position");
-    gl.enableVertexAttribArray(positionLocation);
-    gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
-
-    // Draw
-    let start = performance.now();
-
-    const u_resLoc = gl.getUniformLocation(program, "u_resolution");
-    const u_posLoc = gl.getUniformLocation(program, "u_position");
-    const u_sizeLoc = gl.getUniformLocation(program, "u_size");
-    const uTimeLoc = gl.getUniformLocation(program, "u_time");
-
-    function render() {
-        let now = performance.now();
-        gl.uniform1f(uTimeLoc, (now - start) * 0.001);
-
-        gl.clear(gl.COLOR_BUFFER_BIT);
-        gl.drawArrays(gl.TRIANGLES, 0, 6);
-
-        requestAnimationFrame(render);
-    }
-
-    function resizeCanvas() {
-        const { width, height } = document.documentElement.getBoundingClientRect();
-
-        canvas.setAttribute('width', `${width}px`);
-        canvas.setAttribute('height', `${height}px`);
-
-        const sideImageRect = sideImage.getBoundingClientRect();
-        gl.viewport(0, 0, width, height);
-        gl.uniform2f(u_resLoc, width, height);
-        gl.uniform2f(u_posLoc, sideImageRect.left, height - window.scrollY - sideImageRect.y - sideImageRect.height);
-        gl.uniform2f(u_sizeLoc, sideImageRect.width, sideImageRect.height);
-    }
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
-    render();
-})();

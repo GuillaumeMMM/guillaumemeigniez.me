@@ -6,35 +6,50 @@ title: Home
 <link rel="stylesheet" href="/home.css"/>
 <div class="home-content">
       <div class="description">
-            <p>My name is
-                  <span class="mdf-emphasis">Guillaume Meigniez</span>, I'm a French front-end engineer currently living in Fukuoka. I'm
-                        passionate about data visualization, accessibility and design systems. I believe the key to building great software lies
-                        where design and engineering meet.
-            </p>
-            <p>I'm currently available for
+            <p>I'm
+                  <span class="mdf-emphasis">Guillaume Meigniez</span>, a French front-end engineer currently living in Fukuoka. I'm
+                        passionate about data visualization, accessibility and design systems. I'm currently available for
                   <a href="https://www.malt.fr/profile/guillaumemeigniez" class="mdf-link">freelance</a>
-                  missions. In the past I worked at
-                  <a class="mdf-link" href="https://pass.culture.fr/">pass Culture</a>,
-                  <a class="mdf-link" href="https://www.manadge.com/">Manadge</a>
-                  and
-                  <a class="mdf-link" href="https://www.ibm.com/">IBM France</a>. Have a look at
+                  missions. Have a look at
                   <a class="mdf-link text-no-wrap" href="/assets/resume-guillaume_meigniez.pdf" target="_blank">my
-                        <i>résumé</i>&nbsp;{% include "components/new-tab-icon.njk" %}</a>.</p>
-            <p>In my spare time I like
-                  <a href="https://www.instagram.com/andre.elawrance/" class="mdf-link">making patterns and sewing clothes</a>,
-                  <a href="https://www.chess.com/member/canette-ouverture" class="mdf-link">playng chess</a>
-                  or taking
+                        <i>résumé</i>&nbsp;{% include "components/new-tab-icon.njk" %}</a>.
+            </p>
+            <p>I like
+                  <a href="https://www.instagram.com/andre.elawrance/" class="mdf-link">making clothes</a>,
+                  <a href="https://www.chess.com/member/canette-ouverture" class="mdf-link">playing chess</a>
+                  and taking
                   <a class="mdf-link" href="/social">tourist photos</a>. I
-                  <a class="mdf-link" href="/blog">write about</a>
-                  these interests, as well as about design and front-end technologies.</p>
+                  <a class="mdf-link" href="/blog">blog about</a>
+                  my hobbies, web engineering, web design and front-end technologies.</p>
       </div>
 </div>
-<div class="side-img" id="side-image"></div>
-<div class="canvas">
-      <canvas id="canvas"></canvas>
+<div class="webgl" aria-hidden="true">
+      <div class="side-img" id="side-image"></div>
+      <div class="canvas">
+            <canvas id="canvas"></canvas>
+      </div>
+      <div class="sticker" id="sticker_0"></div>
+      <div class="sticker" id="sticker_1"></div>
+      <div class="sticker" id="sticker_2"></div>
+      <div class="sticker" id="sticker_3"></div>
 </div>
-<div class="sticker" id="sticker">
-      <img eleventy:ignore="eleventy:ignore" src="/assets/img/forme_color_1.png" alt=""/>
+<div class="static">
+      <div class="static-bg">
+            <img alt="Countryside landscape in the USA with grey houses on the horizon and green hills" src="/assets/img/bg3.webp"/>
+      </div>
+      <div class="static-sticker">
+            <img alt="Me with a cap holding an iced coffee cup and winking" src="/assets/img/sticker1.webp"/>
+      </div>
 </div>
-{# <script src="/assets/js/about.js"></script> #}
 <script src="/assets/js/about-drag.js"></script>
+<script src="/assets/js/about-webgl.js"></script>
+<noscript>
+      <style>
+            .webgl {
+                  display: none;
+            }
+            .static {
+                  display: block;
+            }
+      </style>
+</noscript>
