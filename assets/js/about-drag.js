@@ -29,7 +29,6 @@ const rawStickers = [
     {
         id: 3,
         ratio: 2.3034,
-        widthRatio: 1.3,
         bgUrl: 'assets/img/bg9.webp'
     },
     {
@@ -141,6 +140,10 @@ stickers.forEach(st => {
         offY = e.clientY - st.el.offsetTop;
         st.el.style.cursor = 'grabbing';
     });
+
+    st.el.addEventListener('mouseenter', (e) => {
+        preloadImage(st.bgUrl)
+    });
 })
 
 document.addEventListener('pointermove', (e) => {
@@ -165,3 +168,7 @@ document.addEventListener('pointerup', () => {
     })
 });
 
+function preloadImage(url) {
+    var img = new Image();
+    img.src = url;
+}
