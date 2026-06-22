@@ -32,6 +32,35 @@
     }
 }
 
+.side-img-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.2s ease-out;
+
+    --skeleton-color1: var(--mdf-color-background-muted);
+    --skeleton-color2: hsl(from var(--mdf-color-background-muted) h s calc(l - 3));
+
+    background: var(--mdf-color-background-muted);
+    background: linear-gradient(to right, var(--skeleton-color2) 8%, var(--skeleton-color1) 18%, var(--skeleton-color2) 33%);
+    background-size: 1500px 100px;
+    animation: wave 2s infinite ease-out;
+}
+
+@keyframes wave {
+    0% {
+        background-position: -468px 0;
+    }
+
+    100% {
+        background-position: 468px 0;
+    }
+}
+
 .canvas {
     position: absolute;
     top: 0;
@@ -56,6 +85,25 @@
     height: 1px;
 }
 
+.sticker-loading {
+    position: absolute;
+    z-index: 3;
+    pointer-events: none;
+    width: 1px;
+    height: 1px;
+    opacity: 1;
+    border-radius: 10px;
+    transition: opacity 0.2s ease-out;
+
+    --skeleton-color1: hsl(from var(--mdf-color-background-muted) h s calc(l - 5));
+    --skeleton-color2: hsl(from var(--mdf-color-background-muted) h s calc(l - 8));
+
+    background: var(--mdf-color-background-muted);
+    background: linear-gradient(to right, var(--skeleton-color2) 12%, var(--skeleton-color1) 25%, var(--skeleton-color2) 50%);
+    background-size: 800px 100px;
+    animation: wave 2s infinite ease-out;
+}
+
 .static {
     display: none;
     height: auto;
@@ -75,7 +123,9 @@
 }
 
 @media (max-width: 650px) {
-    .side-img {
+
+    .side-img,
+    .side-img-loading {
         width: 100%;
         height: auto;
         min-height: calc((100vw - 2rem) * 0.55555);

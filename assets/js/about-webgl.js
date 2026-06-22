@@ -139,6 +139,14 @@ async function createTexture(gl, url) {
     //  Stickers
     const textures = await Promise.all(stickers.map((st) => createTexture(gl, `assets/img/sticker${st.id}.webp`).then(tx => ({ texture: tx, id: st.id }))));
 
+
+    document.getElementById('side-image-loading').style.opacity = 0;
+    Array.from(document.querySelectorAll('.sticker-loading')).map(((el, i) => {
+        setTimeout(() => {
+            el.style.opacity = 0
+        }, i * 100)
+    }));
+
     const stickersTextures = textures.map((tx, i) => {
         return {
             image: tx.texture,

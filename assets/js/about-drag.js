@@ -119,6 +119,15 @@ const stickers = randomStickers.map(stId => rawStickers.find(rst => rst.id === s
 
 let stickersRects = stickers.map(st => ({ rect: st.el?.getBoundingClientRect(), id: st.id }))
 
+//  Set loading stickers
+stickers.forEach((sticker, i) => {
+    const rectEl = document.getElementById(`sticker-loading_${i}`);
+    const stickerWidthAdapted = stickerWidth * (sticker.widthRatio || 1)
+    rectEl.style.width = `${stickerWidthAdapted}px`;
+    rectEl.style.height = `${stickerWidthAdapted / sticker.ratio}px`;
+    rectEl.style.left = `${sticker.initialPos.x}px`;
+    rectEl.style.top = `${sticker.initialPos.y}px`;
+})
 
 //  Drag and drop of stickers
 const mouse = { x: 0, y: 0 }
