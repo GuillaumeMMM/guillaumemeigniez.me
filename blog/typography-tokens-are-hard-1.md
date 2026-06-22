@@ -84,4 +84,4 @@ The perfect solution to this problem does not seem to exist yet. It's not that e
 
 Some popular design systems have come up with (mostly partial) solutions to this. Following or not their example will depend on the specifications of your own design systems.
 
-In Part 2 I'll compare the pros and cons of 3 design system approaches.
+In [part 2](https://guillaumemeigniez.me/blog/typography-tokens-are-hard-2/) I'll compare the pros and cons of popular design system approaches.
