@@ -142,8 +142,13 @@ async function createTexture(gl, url) {
 
     document.getElementById('side-image-loading').style.opacity = 0;
     Array.from(document.querySelectorAll('.sticker-loading')).map(((el, i) => {
+        el.classList.add('sticker-fading');
         setTimeout(() => {
             el.style.opacity = 0
+
+            setTimeout(() => {
+                el.style.display = 'none';
+            }, 200)
         }, i * 100)
     }));
 
@@ -225,11 +230,19 @@ async function createTexture(gl, url) {
         sideImageRect = sideImage.getBoundingClientRect();
         sideImageHeight = sideImageRect.width / sideImageRatio;
 
-        stickersRects = stickers.map(st => ({ rect: st.el.getBoundingClientRect(), id: st.id }))
-
         canvas.setAttribute('width', `${documentRect.width}px`);
         canvas.setAttribute('height', `${documentRect.height}px`);
         gl.viewport(0, 0, documentRect.width, documentRect.height);
+
+        const outsideStickers = stickersRects.filter(s => s.rect.x + s.rect.width > document.documentElement.clientWidth - 10)
+
+        outsideStickers.forEach(st => {
+            const sticker = stickers.find(stick => stick.id === st.id);
+            const maxX = document.documentElement.clientWidth - st.rect.width;
+            sticker.el.style.left = `${maxX}px`;
+        })
+
+        stickersRects = stickers.map(st => ({ rect: st.el.getBoundingClientRect(), id: st.id }))
 
         updateTexturesPositions();
     }
