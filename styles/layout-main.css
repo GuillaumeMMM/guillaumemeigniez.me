@@ -119,6 +119,7 @@ main {
   grid-template-columns: 1fr 1fr;
   margin: 1rem 0 2rem 0;
   gap: 1rem;
+  width: 100%;
 
   .social-publication-list-item {
     font-size: 0.8rem;
@@ -129,12 +130,21 @@ main {
 
       img {
         width: 100%;
+        min-width: calc((600px - 1rem) / 2);
         height: unset;
         display: block;
         object-fit: cover;
         border-radius: 10px;
         box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
         transition: box-shadow 0.3s ease-out;
+
+        --skeleton-color1: var(--mdf-color-background-muted);
+        --skeleton-color2: hsl(from var(--mdf-color-background-muted) h s calc(l - 3));
+
+        background: var(--mdf-color-background-muted);
+        background: linear-gradient(to right, var(--skeleton-color2) 8%, var(--skeleton-color1) 18%, var(--skeleton-color2) 33%);
+        background-size: 1500px 100px;
+        animation: wave 2s infinite ease-out;
       }
 
       .publication-header {
@@ -336,5 +346,15 @@ i {
 @keyframes fade-in {
   from {
     opacity: 0;
+  }
+}
+
+@keyframes wave {
+  0% {
+    background-position: -468px 0;
+  }
+
+  100% {
+    background-position: 468px 0;
   }
 }
