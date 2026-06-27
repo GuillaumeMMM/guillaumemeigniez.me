@@ -139,7 +139,6 @@ async function createTexture(gl, url) {
     //  Stickers
     const textures = await Promise.all(stickers.map((st) => createTexture(gl, `assets/img/sticker${st.id}.webp`).then(tx => ({ texture: tx, id: st.id }))));
 
-
     document.getElementById('side-image-loading').style.opacity = 0;
     Array.from(document.querySelectorAll('.sticker-loading')).map(((el, i) => {
         el.classList.add('sticker-fading');
@@ -192,6 +191,8 @@ async function createTexture(gl, url) {
 
         if (now - start < 500) {
             gl.uniform1f(uApparitionTransitionTimeLoc, (now - start) / 500);
+        } else {
+            gl.uniform1f(uApparitionTransitionTimeLoc, 1);
         }
 
         gl.activeTexture(gl.TEXTURE0);
