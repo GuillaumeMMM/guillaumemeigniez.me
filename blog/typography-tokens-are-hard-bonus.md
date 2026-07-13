@@ -36,7 +36,7 @@ At the same time, Figma does look a lot like it's made to match the properties o
 
 In that sense the [Design Tokens Community Group](https://www.w3.org/community/design-tokens/) faces the same dichotomy when building specs for design tokens which have to be both ubiquitous and compatible with unique web specificities.
 
-For example [one of the latest issues](https://github.com/design-tokens/community-group/issues/390) opened on their GitHub repository is asking why there's no support for `em` as a dimension token unit, while `px` and `rem` already exist. It's a valid question for someone trying to fit the DTCG specs with their web project. But also isn't it weird that the DTCG spec has a unit called "rem", which is a web convention, may not make sense on other platforms?
+For example [one of the latest issues](https://github.com/design-tokens/community-group/issues/390) opened on their GitHub repository is asking why there's no support for `em` as a dimension token unit, while `px` and `rem` already exist. It's a valid question for someone trying to fit the DTCG specs with their web project. But also isn't it weird that the DTCG spec has a unit called "rem", which is a web convention thay may not make sense on other platforms?
 
 I did not include anything about DTCG in my first two blog posts because its specs are not widely integrated across the design system tech tools yet. Maybe due to the dichotomy mentioned above.
 On a side note, DTCG does not indicate any way of building typography design tokens that take into account the `@font-face` rule pitfalls.
@@ -45,7 +45,7 @@ On a side note, DTCG does not indicate any way of building typography design tok
 
 When researching the topic of web typography from the designer's point of view I noticed that there's a very common misunderstanding of the weight of fonts. Most designer oriented tutorials and content I came across confuse the weight scale of a font with the arbitrary static naming it was given by the font creators.
 
-It becomes a problem when using a token for font weight thinking that it would work across font families. As if the glyphs in "Montserrat-Medium.ttf" would have the same thickness as "... Md.ttf". As if the "Medium", "Rg", "black" or "MdDark" that appear in font file names were a norm that matches a predictable thickness.
+It becomes a problem when using a token for font weight thinking that it would work across font families. As if the glyphs in "Montserrat-Medium.ttf" would have the same thickness as "Helvetica-Md.ttf". As if the "Medium", "Rg", "black" or "DARK" that appear in font file names were a norm that matches a predictable thickness.
 
 One of the points of my previous blog posts was to explain how those are completely arbitrary and how the `@font-face` rule must be the link between the numerical weight scale (from 100 to 1000) and the font file.
 
