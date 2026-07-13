@@ -1,5 +1,5 @@
 ---
-title: Typo tokens are hard to get right (Part 1)
+title: Typography tokens are hard to get right - Part 1
 tags: blog
 date: 2026-06-09 00:00:00
 description: Have you ever tried updating your typography tokens? Chances are that for some of them you can't change their values that easily, and you might not realise it until it breaks your design system users' websites.

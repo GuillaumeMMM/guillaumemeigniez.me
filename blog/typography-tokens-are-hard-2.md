@@ -1,5 +1,5 @@
 ---
-title: Typo tokens are hard to get right (Part 2)
+title: Typography tokens are hard to get right - Part 2
 tags: blog
 date: 2026-06-22 00:00:00
 description: Have you ever tried updating your typography tokens? Chances are that for some of them you can't change their values that easily. This blog post describes strategies chosen by popular design systems to face this issue.
@@ -112,4 +112,4 @@ Examples of design systems using variable fonts with a token for font-weight are
 
 We can see from these different strategies that there is no magic trick making typography tokens easy. You'll have to make compromise on your design system tokens exhaustivity (hey it's not a bad thing to be opinionated!). Technical solutions can exist, but are so much more expensive than their benefit in flexibility that no one has built them yet.
 
-Stay tuned for the bonus part of this tokens series. I'll discuss some unexpected things and rabbit holes I ended up researching along the writing of these posts.
+Stay tuned for the [bonus part](https://guillaumemeigniez.me/blog/typography-tokens-are-hard-bonus/) of this tokens series. I'll discuss some unexpected things and rabbit holes I ended up researching along the writing of these posts.
