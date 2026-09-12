@@ -66,10 +66,42 @@ main {
 }
 
 .footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
   margin-top: 3rem;
-  line-height: 1.8rem;
-  text-align: right;
+  justify-content: flex-end;
 }
+
+.footer-link.mdf-link {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: 1px solid var(--mdf-color-border-default);
+  text-decoration: none;
+  background-color: var(--mdf-color-background-default);
+  vertical-align: middle;
+  width: fit-content;
+
+  &:hover,
+  &:hover:visited {
+    box-shadow: 0 0 0 4px var(--mdf-color-border-muted);
+    background-color: var(--mdf-color-background-default);
+  }
+
+  svg {
+    vertical-align: sub;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-left: 5px;
+  }
+}
+
+@media (max-width: 500px) {
+  .footer {
+    flex-direction: column;
+  }
+}
+
 
 .blog-post-list {
   display: flex;
