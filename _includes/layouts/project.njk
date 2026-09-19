@@ -1,0 +1,26 @@
+---
+layout: layouts/main.njk
+stylesheets:
+  - /project.css
+---
+
+<article>
+    <div class="project-header">
+        <a href="/social" class="mdf-link back-link">
+            <svg viewBox="0 0 14 14" class="arrow" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path
+                    d="M 12.0505 7.3395 h -9.4218 M 7.3395 12.0505 L 2.6286 7.3395 L 7.3395 2.6286"
+                    stroke-width="1.5"
+                    stroke-linejoin="round"
+                    stroke-linecap="round"
+                    stroke="currentColor"></path>
+            </svg>
+            go back</a>
+        <div class="date mdf-badge">{{ date | date }}</div>
+    </div>
+    <h2 class="mdf-title3" style="view-transition-name: {{ title | toTransitionNamePublication }}">{{ title | safe }}</h2>
+    <p class="project-description">{{ content | safe }}</p>
+    <div class="project-footer">
+        <div class="end-marker"></div>
+    </div>
+</article>

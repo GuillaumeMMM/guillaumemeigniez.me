@@ -1,0 +1,15 @@
+---
+layout: layouts/main.njk
+title: Projects
+---
+
+<p class="projects-description">Recent projects</p>
+<ul class="projects-list">
+    {% for project in collections.projects | reverse %}
+        <li class="projects-list-item">
+            <a href="{{ project.url }}">
+                cc
+            </a>
+        </li>
+    {% endfor %}
+</ul>
