@@ -93,6 +93,11 @@
     cursor: pointer;
     width: 1px;
     height: 1px;
+
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
 }
 
 .sticker-loading {
