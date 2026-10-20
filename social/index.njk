@@ -3,6 +3,7 @@ layout: layouts/main.njk
 title: Social
 ---
 
+<h1 class="visually-hidden">{{ title }}</h1>
 <p class="social-description">Photos and snippets of my life
     <a class="mdf-link" href="/social.xml">RSS feed</a>.</p>
 <ul class="social-publication-list">
@@ -28,7 +29,7 @@ title: Social
                         <span class="publication-more-text">{{ publication.data.images.length - 1 }} more<span class="visually-hidden">
                                 pictures to see</span>
                         </span>
-                    </div>
+                    </span>
                 </div>
                 <img eleventy:widths="400" eleventy:formats="webp" {% if loop.index <= 2 %}loading="eager"{% endif %} id="{{ publication.date | dateId }}" src="{{ publication.url }}{{ publication.data.images[0].src }}" alt="{{ publication.data.images[0].alt }}" style="view-transition-name: {{ publication.data.title | toTransitionNameImage }}"/>
                 <span class="publication-description">

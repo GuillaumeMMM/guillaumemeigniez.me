@@ -33,9 +33,15 @@
       {% if lang === 'fr' %}Aller au contenu{% else %}Skip to content{% endif %}
     </a>
     <header class="header">
-      <h1 class="title">
-        <a href="/">Guillaume MEIGNIEZ</a>
-      </h1>
+      {% if page.url === '/' %}
+        <h1 class="title">
+          <a href="/">Guillaume MEIGNIEZ</a>
+        </h1>
+      {% else %}
+        <p class="title">
+          <a href="/">Guillaume MEIGNIEZ</a>
+        </p>
+      {% endif %}
       <div class="nav-container">{% include "components/nav.njk" %}</div>
     </header>
     <main id="main">

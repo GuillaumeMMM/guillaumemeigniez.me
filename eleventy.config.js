@@ -107,30 +107,14 @@ export default function (eleventyConfig) {
             return self.renderToken(tokens, idx, options);
         };
 
-    const defaultHeadingClose =
-        md.renderer.rules.heading_close ||
-        function (tokens, idx, options, env, self) {
-            return self.renderToken(tokens, idx, options);
-        };
-
+    //  The post title is the page h1, so "##" stays an h2 but is styled one size down
     md.renderer.rules.heading_open = function (tokens, idx, options, env, self) {
         const token = tokens[idx];
 
-        const level = Math.min(Number(token.tag.slice(1)) + 1, 6);
-        token.tag = `h${level}`;
-
-        token.attrJoin("class", `mdf-title${level}`);
+        const level = Number(token.tag.slice(1));
+        token.attrJoin("class", `mdf-title${Math.min(level + 1, 6)}`);
 
         return defaultHeadingOpen(tokens, idx, options, env, self);
-    };
-
-    md.renderer.rules.heading_close = function (tokens, idx, options, env, self) {
-        const token = tokens[idx];
-
-        const level = Math.min(Number(token.tag.slice(1)) + 1, 6);
-        token.tag = `h${level}`;
-
-        return defaultHeadingClose(tokens, idx, options, env, self);
     };
 
     md.renderer.rules.code_inline = function (tokens, idx, options, env, self) {
