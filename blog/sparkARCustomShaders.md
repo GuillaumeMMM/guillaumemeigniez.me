@@ -3,6 +3,7 @@ title: Spark AR filters with custom GLSL shaders
 tags: blog
 layout: layouts/post.njk
 date: 2022-01-01 00:00:00
+description: Tutorial for setting up Spark AR with shaders.
 ---
 
 SparkAR is Facebook's powerful and surprisingly accessible tool for creating 3D scenes that can be used as Facebook or Instagram filters. For about two years now, SparkAR's team added a SparkSL section to their documentation where they describe an underused tool of their software.

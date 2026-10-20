@@ -3,6 +3,7 @@ title: Data Humanism - A case study
 tags: blog
 layout: layouts/post.njk
 date: 2019-05-14 00:00:00
+description: A case study of Data Humanism.
 ---
 
 ## Data humanism

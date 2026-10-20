@@ -3,6 +3,7 @@ title: Making bags for strawberry picking
 tags: blog
 layout: layouts/post.njk
 date: 2021-08-26 00:00:00
+description: Process of making bags.
 ---
 
 The goal is to make bags for André·e L. that are solid and convenient. Unlike those made for the first chapter, these should be waterproof, thick and not too big. Perfect for the city market or strawberry picking in the rain.

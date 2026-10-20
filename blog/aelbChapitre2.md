@@ -3,6 +3,7 @@ title: A·EL-B Chapter 2
 tags: blog
 layout: layouts/post.njk
 date: 2021-07-29 00:00:00
+description: Update on A·EL sewing project.
 ---
 
 In 2020 I started sewing again. I made my first jackets based on a pattern I drew from a second hand jacket I found at a Guerrida shop.

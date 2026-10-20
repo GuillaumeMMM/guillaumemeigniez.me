@@ -3,6 +3,7 @@ title: Groix 2021
 tags: blog
 layout: layouts/post.njk
 date: 2022-01-01 00:00:00
+description: Photos from a trip to Groix.
 ---
 
 <p lang="fr">Pour la documentation de la collection André·e Lawrance *Beginner*, je suis allé le temps d'un week end avec 4 amis sur l'île de Groix en Bretagne. La plupart des photos des vêtements ont été faites avec un appareil numérique, mais j'avais aussi apporté un appareil argentique (Cannon AE-1) pour montrer l'envers du décors.</p>

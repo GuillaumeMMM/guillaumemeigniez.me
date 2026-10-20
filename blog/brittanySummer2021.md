@@ -3,6 +3,7 @@ title: Brittany Summer 2021
 tags: blog
 layout: layouts/post.njk
 date: 2021-08-26 00:00:00
+description: Photos from a trip in Brittany in 2021.
 ---
 
 In the summer of 2021 I went to Brittany to see family. I took a few pictures of the landscapes near Séné.

@@ -3,6 +3,7 @@ title: A Tool for Creating More Accessible Design Tokens
 tags: blog
 layout: layouts/post.njk
 date: 2024-12-08 00:00:00
+description: The description of a tool I built for visualizing design tokens.
 ---
 
 Building an internal design system at my company is an exciting position as it pushes me to dig into the frontend and design decisions history as much as it frees space to reorganise parts of the apps.
