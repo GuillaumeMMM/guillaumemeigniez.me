@@ -11,7 +11,7 @@ title: Social
             <a href="{{ publication.url }}" class="social-publication-list-item-image">
                 <div class="publication-header">
                     <span class="publication-date">
-                        <time datetime="{{ publication.date }}">{{ publication.date | date }}</time>
+                        <time datetime="{{ publication.date | isoDate }}">{{ publication.date | date }}</time>
                     </span>
                     <span class="publication-more">
                         <svg width="14px" height="14px" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,7 +30,7 @@ title: Social
                         </span>
                     </div>
                 </div>
-                <img eleventy:widths="400" eleventy:formats="webp" id="{{ publication.date | dateId }}" src="{{ publication.url }}{{ publication.data.images[0].src }}" alt="{{ publication.data.images[0].alt }}" style="view-transition-name: {{ publication.data.title | toTransitionNameImage }}"/>
+                <img eleventy:widths="400" eleventy:formats="webp" {% if loop.index <= 2 %}loading="eager"{% endif %} id="{{ publication.date | dateId }}" src="{{ publication.url }}{{ publication.data.images[0].src }}" alt="{{ publication.data.images[0].alt }}" style="view-transition-name: {{ publication.data.title | toTransitionNameImage }}"/>
                 <span class="publication-description">
                     <span style="view-transition-name: {{ publication.data.title | toTransitionNamePublication }}">{{ publication.data.title }}</span>
                 </span>

@@ -16,14 +16,14 @@ stylesheets:
                     stroke="currentColor"></path>
             </svg>
             go back</a>
-        <div class="date mdf-badge">{{ date | date }}</div>
+        <time class="date mdf-badge" datetime="{{ date | isoDate }}">{{ date | date }}</time>
     </div>
     <h2 class="mdf-title3" style="view-transition-name: {{ title | toTransitionNamePublication }}">{{ title | safe }}</h2>
     <div class="publication-description">{{ content | safe }}</div>
     <ul class="publication-images-list">
         {% for image in images %}
             <li class="publication-images-list-item">
-                <img eleventy:formats="webp" eleventy:widths="800" src="{{ url }}{{ image.src }}" alt="{{ image.alt }}" {% if loop.first %} style="view-transition-name: {{ title | toTransitionNameImage }}" {% endif %}/>
+                <img eleventy:formats="webp" eleventy:widths="800" src="{{ url }}{{ image.src }}" alt="{{ image.alt }}" {% if loop.first %} loading="eager" fetchpriority="high" style="view-transition-name: {{ title | toTransitionNameImage }}" {% endif %}/>
             </li>
         {% endfor %}
     </ul>

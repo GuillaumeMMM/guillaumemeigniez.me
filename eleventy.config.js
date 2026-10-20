@@ -9,7 +9,14 @@ export default function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("./assets");
     eleventyConfig.addPassthroughCopy("./social/**/images");
 
-    eleventyConfig.addPlugin(eleventyImageTransformPlugin);
+    eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
+        htmlOptions: {
+            imgAttributes: {
+                loading: "lazy",
+                decoding: "async",
+            },
+        },
+    });
 
     eleventyConfig.addPlugin(feedPlugin, {
         type: "atom",
@@ -47,6 +54,10 @@ export default function (eleventyConfig) {
         }
     });
 
+    eleventyConfig.addCollection("sitemapPages", collectionApi => {
+        return collectionApi.getAll().filter(item => item.url && item.url.endsWith("/"));
+    });
+
     eleventyConfig.addPlugin(sitemap, {
         sitemap: {
             hostname: "https://guillaumemeigniez.me",
@@ -54,7 +65,11 @@ export default function (eleventyConfig) {
     });
 
     eleventyConfig.addFilter("date", date => {
-        return new Date(date).toLocaleString('en-US', { day: 'numeric', month: "short", year: 'numeric' });
+        return new Date(date).toLocaleString('en-US', { day: 'numeric', month: "short", year: 'numeric', timeZone: 'UTC' });
+    });
+
+    eleventyConfig.addFilter("isoDate", date => {
+        return new Date(date).toISOString().slice(0, 10);
     });
 
     eleventyConfig.addFilter("dateId", date => {
