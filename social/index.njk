@@ -14,7 +14,6 @@ title: Social
                         <time datetime="{{ publication.date }}">{{ publication.date | date }}</time>
                     </span>
                     <span class="publication-more">
-                        <?xml version="1.0" encoding="utf-8"?>
                         <svg width="14px" height="14px" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 fill-rule="evenodd"
@@ -30,7 +29,7 @@ title: Social
                                 pictures to see</span>
                         </span>
                     </div>
-                </span>
+                </div>
                 <img eleventy:widths="400" eleventy:formats="webp" id="{{ publication.date | dateId }}" src="{{ publication.url }}{{ publication.data.images[0].src }}" alt="{{ publication.data.images[0].alt }}" style="view-transition-name: {{ publication.data.title | toTransitionNameImage }}"/>
                 <span class="publication-description">
                     <span style="view-transition-name: {{ publication.data.title | toTransitionNamePublication }}">{{ publication.data.title }}</span>

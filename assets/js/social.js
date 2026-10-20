@@ -2,7 +2,7 @@ const images = document.querySelectorAll('.social-publication-list-item-image');
 const alreadyLoaded = new Set();
 for (const image of images) {
     image.addEventListener('mouseover', (e) => {
-        const url800 = `/social/${e.target.id}/${e.target.src.split('/img/')[1].split('-400.webp')[0]}-800.webp`
+        const url800 = `/social/${e.currentTarget.querySelector('img').id}/${e.currentTarget.querySelector('img').src.split('/img/')[1].split('-400.webp')[0]}-800.webp`
         if (!alreadyLoaded.has(url800)) {
             preloadImage(url800);
         }

@@ -26,7 +26,7 @@ export default function (eleventyConfig) {
             author: {
                 name: "Guillaume Meigniez",
             }
-        }
+        },
     });
 
     eleventyConfig.addPlugin(feedPlugin, {
