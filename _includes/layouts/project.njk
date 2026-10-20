@@ -1,0 +1,84 @@
+---
+layout: layouts/main.njk
+stylesheets:
+  - /project.css
+---
+
+<article>
+    <div class="project-header">
+        <a href="/projects/" class="mdf-link back-link">
+            <svg viewBox="0 0 14 14" class="arrow" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path
+                    d="M 12.0505 7.3395 h -9.4218 M 7.3395 12.0505 L 2.6286 7.3395 L 7.3395 2.6286"
+                    stroke-width="1.5"
+                    stroke-linejoin="round"
+                    stroke-linecap="round"
+                    stroke="currentColor"></path>
+            </svg>
+            go back</a>
+        <time class="date mdf-badge" datetime="{{ date | isoDate }}">{{ displayDate or (date | year) }}</time>
+    </div>
+    <h1 class="mdf-title2 project-title" style="view-transition-name: {{ title | toTransitionNameProject }}">{{ title }}</h1>
+    {% if images %}
+        <ul class="project-images-list">
+            {% for image in images %}
+                <li class="project-images-list-item">
+                    <button type="button" class="project-image-button" aria-haspopup="dialog">
+                        <img eleventy:formats="webp" eleventy:widths="800,1600" sizes="(min-width: 640px) 300px, 100vw" src="{{ image.src }}" alt="{{ image.alt }}" {% if loop.first %} loading="eager" fetchpriority="high" {% endif %} {% if loop.index <= 4 %} style="view-transition-name: {{ title | toTransitionNameProjectImage(loop.index) }}" {% endif %}/>
+                    </button>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if links %}
+        <ul class="project-links">
+            {% for link in links %}
+                <li>
+                    <a href="{{ link.url }}" class="mdf-link footer-link text-no-wrap" target="_blank">{{ link.label }}&nbsp;{% include "components/new-tab-icon.njk" %}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="project-details">
+        {{ content | safe }}
+    </div>
+    {% if technologies %}
+        <section class="project-technologies" aria-labelledby="project-technologies-title">
+            <ul class="project-technologies-list">
+                {% for technology in technologies %}
+                    <li class="mdf-badge">{{ technology }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    {% endif %}
+    {% if images %}
+        <dialog class="image-dialog" id="image-dialog" closedby="any">
+            <div class="image-dialog-controls">
+                {% if images.length > 1 %}
+                    <button type="button" class="image-dialog-button image-dialog-previous" aria-label="Previous image">
+                        <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M 12.0505 7.3395 h -9.4218 M 7.3395 12.0505 L 2.6286 7.3395 L 7.3395 2.6286" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor"></path>
+                        </svg>
+                    </button>
+                    <button type="button" class="image-dialog-button image-dialog-next" aria-label="Next image">
+                        <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M 1.9495 7.3395 h 9.4218 M 6.6605 12.0505 L 11.3714 7.3395 L 6.6605 2.6286" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor"></path>
+                        </svg>
+                    </button>
+                {% endif %}
+                <form method="dialog">
+                    <button class="image-dialog-button image-dialog-close" aria-label="Close" autofocus>
+                        <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M 2.5 2.5 L 11.5 11.5 M 11.5 2.5 L 2.5 11.5" stroke-width="1.5" stroke-linecap="round" stroke="currentColor"></path>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+            <img eleventy:ignore class="image-dialog-image" src="" alt="" sizes="90vw"/>
+        </dialog>
+        <script src="/assets/js/project.js"></script>
+    {% endif %}
+    <div class="project-footer">
+        <div class="end-marker"></div>
+    </div>
+</article>

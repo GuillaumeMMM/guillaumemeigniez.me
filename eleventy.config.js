@@ -1,3 +1,4 @@
+import path from "node:path";
 import markdownIt from "markdown-it";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import sitemap from "@quasibit/eleventy-plugin-sitemap";
@@ -8,6 +9,8 @@ export default function (eleventyConfig) {
     eleventyConfig.addWatchTarget("./assets");
     eleventyConfig.addPassthroughCopy("./assets");
     eleventyConfig.addPassthroughCopy("./social/**/images");
+    //  Browsers request /favicon.ico on their own (a PNG under that name is fine)
+    eleventyConfig.addPassthroughCopy({ "./assets/img/favicon-32.png": "favicon.ico" });
 
     eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
         htmlOptions: {
@@ -72,6 +75,14 @@ export default function (eleventyConfig) {
         return new Date(date).toISOString().slice(0, 10);
     });
 
+    eleventyConfig.addFilter("srcFromInput", (src, inputPath) => {
+        return "/" + path.posix.join(path.posix.dirname(inputPath), src);
+    });
+
+    eleventyConfig.addFilter("year", date => {
+        return new Date(date).getUTCFullYear();
+    });
+
     eleventyConfig.addFilter("dateId", date => {
         return new Date(date).toISOString().slice(0, 10).replace(/-/g, '');
     });
@@ -82,6 +93,14 @@ export default function (eleventyConfig) {
 
     eleventyConfig.addFilter("toTransitionNamePublication", (str) => {
         return `publication-${str.toLowerCase().trim().replace(/[^a-z0-9]/g, "-")}`
+    });
+
+    eleventyConfig.addFilter("toTransitionNameProject", (str) => {
+        return `project-${str.toLowerCase().trim().replace(/[^a-z0-9]/g, "-")}`
+    });
+
+    eleventyConfig.addFilter("toTransitionNameProjectImage", (str, index) => {
+        return `project-image-${str.toLowerCase().trim().replace(/[^a-z0-9]/g, "-")}-${index}`
     });
 
     eleventyConfig.addFilter("toTransitionNameImage", (str) => {

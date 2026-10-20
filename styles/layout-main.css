@@ -293,6 +293,134 @@ main {
   }
 }
 
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  margin: 3rem 0 2rem 0;
+
+  .project-card-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+
+    background-color: var(--mdf-color-background-muted);
+    border: 1px solid var(--mdf-color-border-muted);
+    border-radius: 10px;
+    padding: 1rem;
+    max-width: 350px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    &:hover {
+
+      .project-card-title {
+        text-decoration: underline;
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--mdf-color-outline-default);
+      outline-offset: 4px;
+    }
+  }
+
+  /*  The fan spreads up to ~2.3x the stack width on hover: shrink it on narrow pages so it never overflows */
+  .project-card-previews {
+    --fan-size: min(250px, calc((100vw - 2rem) / 2.4));
+    width: var(--fan-size);
+    height: var(--fan-size);
+    position: relative;
+    margin: 0 auto 2rem auto;
+
+    img {
+      position: absolute;
+      top: -2rem;
+      width: 100%;
+      height: 100%;
+      min-width: 0;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+      transform-origin: 50% 180%;
+      transform: rotate(calc(var(--fan-rotation, 0deg) * var(--fan-spread, 1)));
+      transition: transform 0.3s ease-out;
+    }
+
+    /*  Two previews */
+    img:first-child:nth-last-child(2) {
+      --fan-rotation: 10deg;
+      z-index: 2;
+    }
+
+    img:first-child:nth-last-child(2)+img {
+      --fan-rotation: -10deg;
+      z-index: 1;
+    }
+
+    /*  Three previews */
+    img:first-child:nth-last-child(3) {
+      --fan-rotation: 12deg;
+      z-index: 3;
+    }
+
+    img:first-child:nth-last-child(3)+img {
+      z-index: 2;
+    }
+
+    img:first-child:nth-last-child(3)+img+img {
+      --fan-rotation: -12deg;
+      z-index: 1;
+    }
+
+    /*  Four previews */
+    img:first-child:nth-last-child(4) {
+      --fan-rotation: 15deg;
+      z-index: 4;
+    }
+
+    img:first-child:nth-last-child(4)+img {
+      --fan-rotation: 5deg;
+      z-index: 3;
+    }
+
+    img:first-child:nth-last-child(4)+img+img {
+      --fan-rotation: -5deg;
+      z-index: 2;
+    }
+
+    img:first-child:nth-last-child(4)+img+img+img {
+      --fan-rotation: -15deg;
+      z-index: 1;
+    }
+  }
+
+  .project-card-link:hover .project-card-previews,
+  .project-card-link:focus-visible .project-card-previews {
+    --fan-spread: 1.5;
+  }
+
+  .project-card-title {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .project-card-year {
+    display: block;
+  }
+
+  .project-card-description {
+    margin-top: 5px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .project-card-link,
+    .project-card-previews img {
+      transition: none;
+    }
+  }
+}
+
 .menu {
   display: flex;
   align-items: center;

@@ -1,0 +1,29 @@
+---
+layout: layouts/main.njk
+title: Projects
+description: Side projects and professional work.
+---
+
+<h1 class="visually-hidden">{{ title }}</h1>
+{# <p class="projects-description">A selection of projects I worked on.</p> #}
+<ul class="project-list">
+    {% for project in collections.projects | reverse %}
+        {% set isFirstCard = loop.first %}
+        <li class="project-card">
+            <a href="{{ project.url }}" class="project-card-link">
+                {% if project.data.images %}
+                    <div class="project-card-previews">
+                        {% for image in project.data.images %}
+                            {% if loop.index <= 4 %}
+                                <img eleventy:widths="400" eleventy:formats="webp" {% if isFirstCard %} loading="eager" {% endif %} src="{{ image.src | srcFromInput(project.inputPath) }}" alt="" style="view-transition-name: {{ project.data.title | toTransitionNameProjectImage(loop.index) }}"/>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <h2 class="project-card-title" style="view-transition-name: {{ project.data.title | toTransitionNameProject }}">{{ project.data.title }}</h2>
+                <time class="project-card-year mdf-muted" datetime="{{ project.date | isoDate }}">{{ project.data.displayDate or (project.date | year) }}</time>
+                <p class="project-card-description mdf-muted">{{ project.data.description }}</p>
+            </a>
+        </li>
+    {% endfor %}
+</ul>
