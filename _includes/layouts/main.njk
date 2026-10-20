@@ -6,7 +6,7 @@
     <meta name="description" content="{% if description %}{{ description | escape }}{% else %}Guillaume Meigniez is a French front-end engineer, blogging about design systems, accessibility, data visualization, and creative side projects.{% endif %}">
     <link rel="preload" href="/assets/fonts/IBMPlexSans-Latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/bundle.css">
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon.png">
+    <link rel="icon" type="image/webp" sizes="192x192" href="/assets/img/favicon.webp">
     {% if stylesheets %}
       {% for href in stylesheets %}
         <link rel="stylesheet" href="{{ href }}">
@@ -17,6 +17,9 @@
         Blog |
       {% endif %}
       Guillaume Meigniez</title>
+    <link rel="canonical" href="https://guillaumemeigniez.me{{ page.url }}">
+    <link rel="alternate" type="application/atom+xml" href="/blog.xml" title="Blog">
+    <link rel="alternate" type="application/atom+xml" href="/social.xml" title="Social">
     <noscript>
       <style>
         .webgl {
