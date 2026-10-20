@@ -9,10 +9,9 @@ async function loadShaderSource(url) {
 function loadImage(url) {
     return new Promise((resolve, reject) => {
         const img = new Image();
-        img.src = url;
-        img.crossOrigin = ""; // optional if loading from another domain
         img.onload = () => resolve(img);
         img.onerror = reject;
+        img.src = url;
     });
 }
 
@@ -29,8 +28,7 @@ function areColliding(rect1, rect2) {
     );
 }
 
-async function createTexture(gl, url) {
-    const img = await loadImage(url);
+function createTexture(gl, img) {
     const texture = gl.createTexture();
 
     gl.bindTexture(gl.TEXTURE_2D, texture);
@@ -39,13 +37,8 @@ async function createTexture(gl, url) {
 
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-
-    gl.generateMipmap(gl.TEXTURE_2D);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
 
     return texture;
 }
@@ -53,9 +46,28 @@ async function createTexture(gl, url) {
 (async function () {
     const gl = canvas.getContext("webgl2");
 
-    if (!gl) {
-        alert("WebGL2 not supported in your browser.");
+    //  Show the static image instead of the animation
+    if (!gl || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.add("no-webgl");
+        return;
     }
+
+    //  Background textures are created once per url and reused
+    const texturesCache = new Map();
+    function getTexture(url) {
+        if (!texturesCache.has(url)) {
+            texturesCache.set(url, loadImage(url).then(img => createTexture(gl, img)));
+        }
+        return texturesCache.get(url);
+    }
+
+    //  Download shaders, background and stickers in parallel
+    const [vertexSource, fragmentSource, firstBgTexture, stickerImages] = await Promise.all([
+        loadShaderSource("assets/js/shaders/shader.vert"),
+        loadShaderSource("assets/js/shaders/shader.frag"),
+        getTexture(stickers[0].bgUrl),
+        Promise.all(stickers.map(st => loadImage(`assets/img/sticker${st.id}.webp`))),
+    ]);
 
     // Compile shader helper
     function compileShader(type, source) {
@@ -70,15 +82,8 @@ async function createTexture(gl, url) {
         return shader;
     }
 
-    const vertexShader = compileShader(
-        gl.VERTEX_SHADER,
-        await loadShaderSource("assets/js/shaders/shader.vert")
-    );
-
-    const fragmentShader = compileShader(
-        gl.FRAGMENT_SHADER,
-        await loadShaderSource("assets/js/shaders/shader.frag")
-    );
+    const vertexShader = compileShader(gl.VERTEX_SHADER, vertexSource);
+    const fragmentShader = compileShader(gl.FRAGMENT_SHADER, fragmentSource);
 
     const program = gl.createProgram();
     gl.attachShader(program, vertexShader);
@@ -119,7 +124,7 @@ async function createTexture(gl, url) {
     gl.uniform1f(uStartTransitionTimeLoc, 0);
     gl.uniform1f(uPixelIntensityLoc, 1);
 
-    let texture_bg = await createTexture(gl, stickers[0].bgUrl);
+    let texture_bg = firstBgTexture;
     let texture_bg_next = null;
 
     //  Current background texture
@@ -137,7 +142,7 @@ async function createTexture(gl, url) {
     gl.uniform1i(uImageNextLoc, 1);
 
     //  Stickers
-    const textures = await Promise.all(stickers.map((st) => createTexture(gl, `assets/img/sticker${st.id}.webp`).then(tx => ({ texture: tx, id: st.id }))));
+    const textures = stickerImages.map(img => createTexture(gl, img));
 
     document.getElementById('side-image-loading').style.opacity = 0;
     Array.from(document.querySelectorAll('.sticker-loading')).map(((el, i) => {
@@ -151,9 +156,9 @@ async function createTexture(gl, url) {
         }, i * 100)
     }));
 
-    const stickersTextures = textures.map((tx, i) => {
+    const stickersTextures = textures.map((texture, i) => {
         return {
-            image: tx.texture,
+            image: texture,
             texture: gl.getUniformLocation(program, `u_image_sticker_${i}`),
             pos: gl.getUniformLocation(program, `u_imagePos_sticker_${i}`),
             size: gl.getUniformLocation(program, `u_imageSize_sticker_${i}`)
@@ -200,23 +205,10 @@ async function createTexture(gl, url) {
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, texture_bg_next);
 
-        gl.activeTexture(gl.TEXTURE2);
-        gl.bindTexture(gl.TEXTURE_2D, stickersTextures[0].image);
-
-        if (stickersTextures[1]) {
-            gl.activeTexture(gl.TEXTURE3);
-            gl.bindTexture(gl.TEXTURE_2D, stickersTextures[1].image);
-        }
-
-        if (stickersTextures[1]) {
-            gl.activeTexture(gl.TEXTURE4);
-            gl.bindTexture(gl.TEXTURE_2D, stickersTextures[2].image);
-        }
-
-        if (stickersTextures[1]) {
-            gl.activeTexture(gl.TEXTURE5);
-            gl.bindTexture(gl.TEXTURE_2D, stickersTextures[3].image);
-        }
+        stickersTextures.forEach((stTex, i) => {
+            gl.activeTexture(gl.TEXTURE0 + STICKER_TEXTURE_OFFSET + i);
+            gl.bindTexture(gl.TEXTURE_2D, stTex.image);
+        })
 
         gl.clear(gl.COLOR_BUFFER_BIT);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
@@ -226,14 +218,24 @@ async function createTexture(gl, url) {
         requestAnimationFrame(render);
     }
 
-    function resizeCanvas() {
+    //  Element positions change on scroll, but the canvas size does not
+    function updateRects() {
         documentRect = document.documentElement.getBoundingClientRect();
         sideImageRect = sideImage.getBoundingClientRect();
         sideImageHeight = sideImageRect.width / sideImageRatio;
+        stickersRects = stickers.map(st => ({ rect: st.el.getBoundingClientRect(), id: st.id }))
+    }
 
-        canvas.setAttribute('width', `${documentRect.width}px`);
-        canvas.setAttribute('height', `${documentRect.height}px`);
-        gl.viewport(0, 0, documentRect.width, documentRect.height);
+    function resizeCanvas() {
+        updateRects();
+
+        const width = Math.round(documentRect.width);
+        const height = Math.round(documentRect.height);
+        if (canvas.width !== width || canvas.height !== height) {
+            canvas.width = width;
+            canvas.height = height;
+            gl.viewport(0, 0, width, height);
+        }
 
         const outsideStickers = stickersRects.filter(s => s.rect.x + s.rect.width > document.documentElement.clientWidth - 10)
 
@@ -243,8 +245,7 @@ async function createTexture(gl, url) {
             sticker.el.style.left = `${maxX}px`;
         })
 
-        stickersRects = stickers.map(st => ({ rect: st.el.getBoundingClientRect(), id: st.id }))
-
+        updateRects();
         updateTexturesPositions();
     }
 
@@ -259,7 +260,7 @@ async function createTexture(gl, url) {
             gl.uniform2f(stTex.size, stickersRects[i].rect.width, stickersRects[i].rect.height);
         })
 
-        gl.uniform2f(uMouseLoc, mouse.x, documentRect.height - mouse.y);
+        gl.uniform2f(uMouseLoc, mouse.x, documentRect.height - window.scrollY - mouse.y);
 
         //  When a new sticker collides with the bg, update the bg image
         const collidingStickers = stickersRects.filter(stickerRect => areColliding(sideImageRect, stickerRect.rect));
@@ -267,7 +268,7 @@ async function createTexture(gl, url) {
         collidingStickersIds = collidingStickers.map(st => st.id);
 
         if (newColliding && newColliding.length > 0 && newColliding[0] !== lastStickerIdColliding) {
-            createTexture(gl, stickers.find(st => st.id === newColliding[0])?.bgUrl).then((res) => {
+            getTexture(stickers.find(st => st.id === newColliding[0])?.bgUrl).then((res) => {
                 if (displayedBgIndex === 0) {
                     texture_bg_next = res;
                 } else {
@@ -288,7 +289,7 @@ async function createTexture(gl, url) {
     }
 
     window.addEventListener("resize", resizeCanvas);
-    window.addEventListener("scroll", resizeCanvas);
+    window.addEventListener("scroll", updateRects, { passive: true });
 
     resizeCanvas();
     render();

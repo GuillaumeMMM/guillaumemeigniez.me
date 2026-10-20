@@ -91,6 +91,7 @@
     position: absolute;
     z-index: 2;
     cursor: pointer;
+    touch-action: none;
     width: 1px;
     height: 1px;
 
@@ -149,6 +150,17 @@
         width: 100%;
         height: auto;
         min-height: calc((100vw - 2rem) * 0.55555);
+    }
+}
+
+/*  Set by about-webgl.js when WebGL2 is unavailable */
+.no-webgl {
+    .webgl {
+        display: none;
+    }
+
+    .static {
+        display: block;
     }
 }
 
